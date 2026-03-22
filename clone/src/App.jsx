@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { LogoZohoDesk, LogoIntercom, LogoGorgias, LogoZendesk, LogoSalesforce, LogoSprinklr, LogoFront, LogoHubSpot, LogoFreshdesk, LogoJira, LogoFin } from './IntegrationLogos';
 
 const IconClose = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -37,12 +38,13 @@ const IconUser = () => (
   </svg>
 );
 
-const SectionLabel = ({ text }) => (
-  <div className="section-label-container">
+const SectionLabel = ({ text, withDivider = false }) => (
+  <div className={`section-label-container${withDivider ? ' with-divider' : ''}`}>
     <div className="section-label">
       <div className="label-square"></div>
       <span className="label-text">{text}</span>
     </div>
+    {withDivider && <div className="section-label-divider"></div>}
   </div>
 );
 
@@ -57,25 +59,62 @@ const CardBrackets = () => (
 
 function App() {
   const [activeSection, setActiveSection] = useState('01');
+  const [sectionProgress, setSectionProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const mobileNavRef = React.useRef(null);
+
+  const sectionList = [
+    { id: 'capabilities', num: '01', label: 'CAPABILITIES' },
+    { id: 'performance', num: '02', label: 'PERFORMANCE' },
+    { id: 'integrations', num: '03', label: 'INTEGRATIONS' },
+    { id: 'technology', num: '04', label: 'TECHNOLOGY' },
+    { id: 'team', num: '05', label: 'AI TEAM' },
+    { id: 'pricing', num: '06', label: 'PRICING' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
       const sections = ['capabilities', 'performance', 'integrations', 'technology', 'team', 'pricing'];
-      for (const section of sections.reverse()) {
-        const el = document.getElementById(section);
-        if (el && window.scrollY >= el.offsetTop - 300) {
-          const index = sections.indexOf(section) + 1;
-          setActiveSection(`0${index}`);
-          break;
+      let found = false;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 150) {
+            setActiveSection(`0${i + 1}`);
+            const sectionHeight = el.offsetHeight;
+            const scrolledInto = 150 - rect.top;
+            const progress = Math.min(Math.max(scrolledInto / sectionHeight, 0), 1);
+            setSectionProgress(progress);
+            found = true;
+            break;
+          }
         }
       }
+      if (!found) {
+        setActiveSection('01');
+        setSectionProgress(0);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileNavRef.current) {
+      const activeEl = mobileNavRef.current.querySelector('.mobile-nav-item.active');
+      if (activeEl) {
+        const container = mobileNavRef.current;
+        const scrollLeft = activeEl.offsetLeft - container.offsetWidth / 2 + activeEl.offsetWidth / 2;
+        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      }
+    }
+  }, [activeSection]);
+
+  const activeIndex = parseInt(activeSection) - 1;
+  const progressPercent = (activeIndex / (sectionList.length - 1)) * 100;
 
   return (
     <div className="app-container">
@@ -128,7 +167,6 @@ function App() {
             src="/hero_loop.webm"
             poster="/hero-loop-poster.webp"
           />
-          <div className="hero-fade-top"></div>
           <div className="hero-fade-bottom"></div>
           <div className="hero-fade-left"></div>
           <div className="hero-fade-right"></div>
@@ -176,15 +214,38 @@ function App() {
           </div>
         </section>
 
+        <nav className="mobile-section-nav">
+          <div className="mobile-nav-scroll" ref={mobileNavRef}>
+            {sectionList.map((s) => (
+              <a
+                key={s.num}
+                href={`#${s.id}`}
+                className={`mobile-nav-item ${activeSection === s.num ? 'active' : ''}`}
+              >
+                {s.num}  {s.label}
+              </a>
+            ))}
+          </div>
+          <div className="mobile-nav-track">
+            <div
+              className="mobile-nav-progress"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+        </nav>
+
         <div className="content-layout relative z-10">
           <aside className="sticky-sidebar">
             <ul className="sidebar-nav">
-              <li className={activeSection === '01' ? 'active' : ''}><a href="#capabilities">01 CAPABILITIES</a></li>
-              <li className={activeSection === '02' ? 'active' : ''}><a href="#performance">02 PERFORMANCE</a></li>
-              <li className={activeSection === '03' ? 'active' : ''}><a href="#integrations">03 INTEGRATIONS</a></li>
-              <li className={activeSection === '04' ? 'active' : ''}><a href="#technology">04 TECHNOLOGY</a></li>
-              <li className={activeSection === '05' ? 'active' : ''}><a href="#team">05 AI TEAM</a></li>
-              <li className={activeSection === '06' ? 'active' : ''}><a href="#pricing">06 PRICING</a></li>
+              {sectionList.map((s) => (
+                <li key={s.num} className={activeSection === s.num ? 'active' : ''}>
+                  <a href={`#${s.id}`}>{s.num} {s.label}</a>
+                  <span
+                    className="sidebar-progress-line"
+                    style={{ width: activeSection === s.num ? `${sectionProgress * 100}%` : '0%' }}
+                  />
+                </li>
+              ))}
             </ul>
           </aside>
 
@@ -192,8 +253,9 @@ function App() {
             
             <section id="capabilities" className="card-section light-card">
               <CardBrackets />
-              <SectionLabel text="CAPABILITIES" />
-              <h2 className="section-title text-black">
+              <SectionLabel text="CAPABILITIES" withDivider />
+
+              <h2 className="capabilities-heading">
                 Fin resolves the most complex queries on every channel
               </h2>
               
@@ -233,58 +295,143 @@ function App() {
 
             <section id="performance" className="card-section light-card mt-6">
               <CardBrackets />
-              <SectionLabel text="UNRIVALED PERFORMANCE" />
-              <h2 className="section-title text-black">
-                Fin outperforms every competitor. <span>Every time.</span>
+              <SectionLabel text="UNRIVALED PERFORMANCE" withDivider />
+              <h2 className="capabilities-heading">
+                Fin outperforms every competitor. <span className="italic-serif">Every time.</span>
               </h2>
 
+              <div className="chart-label" style={{marginBottom: '8px', marginTop: '40px'}}>FIG 2.A - FIN'S AVERAGE RESOLUTION RATE INCREASES 1% EVERY MONTH</div>
               <div className="chart-container">
-                <div className="chart-label">FIG 2.A - FIN'S AVERAGE RESOLUTION RATE INCREASES 1% EVERY MONTH</div>
+                <span className="dashed-taper top-left"></span>
+                <span className="dashed-taper top-right"></span>
+                <span className="dashed-taper bottom-left"></span>
+                <span className="dashed-taper bottom-right"></span>
                 <div className="line-chart-area">
-                  <div className="grid-lines-h">
-                    <span>40%</span><span>30%</span><span>20%</span><span>10%</span>
-                  </div>
-                  <div className="chart-path-wrapper">
-                     <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
-                        <path d="M0,250 L100,230 L200,240 L300,200 L400,210 L500,150 L600,160 L700,100 L800,120 L900,50 L1000,40" fill="none" stroke="var(--accent-orange)" strokeWidth="3"/>
-                        <path d="M0,280 L100,260 L200,270 L300,240 L400,250 L500,190 L600,200 L700,150 L800,170 L900,100 L1000,90" fill="none" stroke="rgba(0,0,0,0.15)" strokeWidth="2" strokeDasharray="4,4"/>
-                     </svg>
-                  </div>
-                  <div className="grid-lines-v">
-                    <span>MAY 2023</span><span>JUN 2023</span><span>JUL 2023</span><span>...</span><span>DEC 2025</span>
-                  </div>
+                  <svg viewBox="0 0 900 400" preserveAspectRatio="none" className="perf-chart-svg">
+                    <defs>
+                      <linearGradient id="lineGradientH" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0" stopColor="#FF5600" stopOpacity="0" />
+                        <stop offset="0.05" stopColor="#FF5600" stopOpacity="0.4" />
+                        <stop offset="0.1" stopColor="#FF5600" stopOpacity="0.6" />
+                        <stop offset="0.25" stopColor="#FF5600" stopOpacity="0.9" />
+                        <stop offset="1" stopColor="#FF5600" stopOpacity="1" />
+                      </linearGradient>
+                      <linearGradient id="areaFillGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stopColor="#FF5600" stopOpacity="1" />
+                        <stop offset="0.2" stopColor="#FF5600" stopOpacity="0.9" />
+                        <stop offset="0.5" stopColor="#FF5600" stopOpacity="0.7" />
+                        <stop offset="0.8" stopColor="#FF5600" stopOpacity="0.3" />
+                        <stop offset="1" stopColor="#FF5600" stopOpacity="0" />
+                      </linearGradient>
+                      <pattern id="dotPatternChart" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <circle cx="1" cy="1" r="1" fill="#EFEFEF" />
+                      </pattern>
+                      <mask id="areaMask">
+                        <rect width="900" height="400" fill="white" />
+                      </mask>
+                    </defs>
+                    {/* Horizontal grid lines (dashed) */}
+                    {[60, 110, 160, 210, 260, 310, 350].map((y, i) => (
+                      <line key={i} x1="50" y1={y} x2="880" y2={y} stroke="rgba(0,0,0,0.08)" strokeDasharray="8 8" />
+                    ))}
+                    {/* Y-axis labels */}
+                    {['70%','60%','50%','40%','30%','20%','10%'].map((label, i) => (
+                      <text key={i} x="45" y={60 + i * 50 + 4} textAnchor="end" className="chart-axis-label">{label}</text>
+                    ))}
+                    {/* Area fill with dot pattern */}
+                    <path d="M60,320 L100,310 L140,305 L180,300 L220,290 L260,275 L300,260 L340,240 L380,230 L420,210 L460,200 L500,185 L540,175 L560,170 L600,160 L640,155 L680,140 L720,130 L760,115 L800,105 L840,90 L870,80 L870,350 L60,350 Z" fill="url(#dotPatternChart)" />
+                    {/* Area fill gradient overlay */}
+                    <path d="M60,320 L100,310 L140,305 L180,300 L220,290 L260,275 L300,260 L340,240 L380,230 L420,210 L460,200 L500,185 L540,175 L560,170 L600,160 L640,155 L680,140 L720,130 L760,115 L800,105 L840,90 L870,80 L870,350 L60,350 Z" fill="url(#areaFillGrad)" opacity="0.6" />
+                    {/* Orange line */}
+                    <path d="M60,320 L100,310 L140,305 L180,300 L220,290 L260,275 L300,260 L340,240 L380,230 L420,210 L460,200 L500,185 L540,175 L560,170 L600,160 L640,155 L680,140 L720,130 L760,115 L800,105 L840,90 L870,80" fill="none" stroke="url(#lineGradientH)" strokeWidth="2.5" />
+                    {/* Data point circles */}
+                    {[[60,320],[100,310],[140,305],[180,300],[220,290],[260,275],[300,260],[340,240],[380,230],[420,210],[460,200],[500,185],[540,175],[560,170],[600,160],[640,155],[680,140],[720,130],[760,115],[800,105],[840,90],[870,80]].map(([cx,cy], i) => (
+                      <circle key={i} cx={cx} cy={cy} r="3.5" fill="white" stroke="#FF5600" strokeWidth="1.5" opacity={i < 3 ? 0.3 + i * 0.2 : 1} />
+                    ))}
+                    {/* Dashed comparison line */}
+                    <path d="M60,330 L100,325 L140,328 L180,320 L220,315 L260,310 L300,300 L340,290 L380,285 L420,270 L460,265 L500,255 L540,250 L560,245 L600,240 L640,235 L680,230 L720,225 L760,220 L800,215 L840,210 L870,205" fill="none" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="6 6" />
+                    {/* X-axis labels */}
+                    {['MAY 2023','JUN 2023','JUL 2023','SEP 2023','NOV 2023','DEC 2023','FEB 2024','APR 2024','JUN 2024','SEP 2024','OCT 2024','NOV 2024','DEC 2024','JAN 2025','FEB 2025','MAR 2025','APR 2025','MAY 2025','JUN 2025','JUL 2025','AUG 2025','OCT 2025','NOV 2025','DEC 2025'].map((label, i) => (
+                      <text key={i} x={60 + i * 35} y={370} textAnchor="end" className="chart-axis-label" transform={`rotate(-90, ${60 + i * 35}, 370)`}>{label}</text>
+                    ))}
+                  </svg>
                 </div>
               </div>
 
-              <div className="performance-bottom-grid mt-12">
-                <div className="chart-box">
-                  <div className="chart-label">FIG 2.B - FIN WINS EVERY HEAD-TO-HEAD TEST ON RESOLUTION RATE</div>
-                  <div className="bar-chart-area">
-                    <div className="y-axis"><span>80%</span><span>60%</span><span>40%</span></div>
-                    <div className="bars">
-                      <div className="bar-group">
-                        <div className="bar outline" style={{height: '49%'}}><span>49%</span></div>
-                        <div className="bar outline" style={{height: '50%'}}><span>50%</span></div>
-                        <div className="bar solid orange" style={{height: '73%'}}><span>73%</span></div>
-                        <div className="bar-labels">
-                           <span>DECAGON</span><span>FORETHOUGHT</span><span>FIN</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="chart-caption">
-                      Resolution rate based on independent testing conducted by Fin customers.
+              <div className="performance-bottom-grid">
+                <div className="perf-box-wrapper">
+                  <div className="chart-label" style={{marginBottom: '8px'}}>FIG 2.B - FIN WINS EVERY HEAD-TO-HEAD TEST ON RESOLUTION RATE</div>
+                  <div className="chart-box bordered-box">
+                    <span className="dashed-taper top-left"></span>
+                    <span className="dashed-taper top-right"></span>
+                    <span className="dashed-taper bottom-left"></span>
+                    <span className="dashed-taper bottom-right"></span>
+                    <div className="bar-chart-area">
+                      <svg viewBox="0 0 450 315" className="bar-chart-svg">
+                        <defs>
+                          <pattern id="dotPatternInactive" width="7" height="7" patternUnits="userSpaceOnUse">
+                            <circle cx="0.5" cy="0.5" r="1" fill="rgba(0,0,0,0.25)" />
+                          </pattern>
+                          <pattern id="dotPatternActive" width="7" height="7" patternUnits="userSpaceOnUse">
+                            <circle cx="1" cy="1" r="1" fill="#EFEFEF" />
+                          </pattern>
+                        </defs>
+                        {/* Grid lines */}
+                        {[35, 70, 105, 140, 175, 210, 245, 280].map((y, i) => (
+                          <line key={i} x1="5" y1={y} x2="415" y2={y} stroke="rgba(0,0,0,0.15)" strokeDasharray="8 8" />
+                        ))}
+                        {/* Y-axis labels */}
+                        {['80%','60%','40%','20%'].map((label, i) => (
+                          <text key={i} x="2" y={35 + i * 70 + 4} textAnchor="start" className="chart-axis-label">{label}</text>
+                        ))}
+                        {/* X-axis line */}
+                        <line x1="5" y1="285" x2="415" y2="285" stroke="rgba(0,0,0,0.4)" />
+                        {/* DECAGON bar */}
+                        <rect x="55" y="145" width="100" height="140" fill="#E8E7E0" />
+                        <rect x="55" y="145" width="100" height="140" fill="url(#dotPatternInactive)" stroke="rgba(0,0,0,0.4)" strokeWidth="1" />
+                        {/* FORETHOUGHT bar */}
+                        <rect x="175" y="142" width="100" height="143" fill="#E8E7E0" />
+                        <rect x="175" y="142" width="100" height="143" fill="url(#dotPatternInactive)" stroke="rgba(0,0,0,0.4)" strokeWidth="1" />
+                        {/* FIN bar */}
+                        <rect x="295" y="60" width="100" height="225" fill="#FF5600" />
+                        <rect x="295" y="60" width="100" height="225" fill="url(#dotPatternActive)" stroke="#FF5600" strokeWidth="1" />
+                        {/* Value labels - inside bars, top-left */}
+                        <rect x="55" y="145" width="40" height="20" fill="#f4f3ec" />
+                        <line x1="95" y1="145" x2="95" y2="165" stroke="rgba(0,0,0,0.4)" />
+                        <line x1="55" y1="165" x2="95" y2="165" stroke="rgba(0,0,0,0.4)" />
+                        <text x="60" y="159" textAnchor="start" className="chart-bar-value">49%</text>
+                        <rect x="175" y="142" width="40" height="20" fill="#f4f3ec" />
+                        <line x1="215" y1="142" x2="215" y2="162" stroke="rgba(0,0,0,0.4)" />
+                        <line x1="175" y1="162" x2="215" y2="162" stroke="rgba(0,0,0,0.4)" />
+                        <text x="180" y="156" textAnchor="start" className="chart-bar-value">50%</text>
+                        <rect x="295" y="60" width="40" height="20" fill="white" />
+                        <line x1="335" y1="60" x2="335" y2="80" stroke="#FF5600" />
+                        <line x1="295" y1="80" x2="335" y2="80" stroke="#FF5600" />
+                        <text x="300" y="74" textAnchor="start" className="chart-bar-value active">73%</text>
+                        {/* Bar labels */}
+                        <text x="105" y="305" textAnchor="middle" className="chart-axis-label">DECAGON</text>
+                        <text x="225" y="305" textAnchor="middle" className="chart-axis-label">FORETHOUGHT</text>
+                        <text x="345" y="305" textAnchor="middle" className="chart-bar-label-active">FIN</text>
+                      </svg>
+                      <div className="bar-chart-caption">Resolution rate based on independent testing conducted by Fin customers.</div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="testimonial-box">
-                  <div className="chart-label">FIG 2.C - FINTECH CUSTOMER</div>
-                  <div className="testimonial-content">
-                    <div className="avatar-placeholder"></div>
-                    <blockquote>
-                      "Fin is in a completely different league. It's now involved in 99% of conversations and <mark>successfully resolves up to 65% end-to-end – even the more complex ones.</mark>"
-                    </blockquote>
-                    <cite>Angelo Livanos, Vice President of Global Support at Lightspeed</cite>
+                <div className="perf-box-wrapper">
+                  <div className="chart-label" style={{marginBottom: '8px'}}>FIG 2.C - FINTECH CUSTOMER</div>
+                  <div className="testimonial-box bordered-box">
+                    <span className="dashed-taper top-left"></span>
+                    <span className="dashed-taper top-right"></span>
+                    <span className="dashed-taper bottom-left"></span>
+                    <span className="dashed-taper bottom-right"></span>
+                    <div className="testimonial-content">
+                      <div className="avatar-placeholder"></div>
+                      <blockquote>
+                        "Fin is in a completely different league. It's now involved in 99% of conversations and <mark>successfully resolves up to 65% end-to-end – even the more complex ones.</mark>"
+                      </blockquote>
+                      <cite>Angelo Livanos, Vice President of Global Support at Lightspeed</cite>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -330,47 +477,80 @@ function App() {
 
             <section id="integrations" className="card-section dark-card mt-6 has-borders">
               <CardBrackets />
-              <SectionLabel text="SEAMLESS INTEGRATION" />
-              <h2 className="section-title">Fin works with<br/>any helpdesk</h2>
+              <SectionLabel text="SEAMLESS INTEGRATION" withDivider />
               
-              <div className="content-grid two-col">
-                <div className="text-block pt-4">
+              <div className="content-grid two-col int-section-grid">
+                <div className="text-block int-text-col">
+                  <h2 className="section-title" style={{marginBottom: '16px'}}>Fin works with<br/>any helpdesk</h2>
                   <p className="with-number"><span className="mono-label">03</span> Set up Fin with your existing helpdesk or as part of the Intercom Customer Service Suite—with support for additional platforms and custom channels.</p>
                   
-                  <h4 className="sub-heading mt-12">KEY FEATURES</h4>
-                  <ul className="check-list">
-                    <li>Set up in under an hour.</li>
-                    <li>Integrates into your current support channels—tickets, email, live chat, and more.</li>
-                    <li>Follows your existing assignment rules, automations, and reporting.</li>
-                    <li>Escalates to agents in your preferred inbox.</li>
-                  </ul>
-                  
-                  <div className="link-tabs mt-12">
-                    <a href="#" className="active">Intercom Suite</a>
-                    <a href="#">Fin for Zendesk</a>
-                    <a href="#">Fin for Salesforce</a>
+                  <div className="int-features-block">
+                    <div className="section-label-container with-divider int-features-label" style={{marginBottom: '16px'}}>
+                      <div className="section-label">
+                        <span className="label-text">KEY FEATURES</span>
+                      </div>
+                      <div className="section-label-divider"></div>
+                    </div>
+                    <ul className="check-list">
+                      <li>Set up in under an hour.</li>
+                      <li>Integrates into your current support channels—tickets, email, live chat, and more.</li>
+                      <li>Follows your existing assignment rules, automations, and reporting.</li>
+                      <li>Escalates to agents in your preferred inbox.</li>
+                    </ul>
+                    
+                    <div className="link-tabs mt-12">
+                      <a href="#" className="active">Intercom Suite</a>
+                      <a href="#">Fin for Zendesk</a>
+                      <a href="#">Fin for Salesforce</a>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="integrations-grid">
-                   <div className="integration-box">Zoho Desk</div>
-                   <div className="integration-box">intercom</div>
-                   <div className="integration-box">gorgias</div>
-                   <div className="integration-box">zendesk</div>
-                   <div className="integration-box highlight"><IconLogo width="32" height="32" /> Fin</div>
-                   <div className="integration-box">salesforce</div>
-                   <div className="integration-box">sprinklr</div>
-                   <div className="integration-box">Front</div>
-                   <div className="integration-box">HubSpot</div>
-                   <div className="integration-box">freshdesk</div>
-                   <div className="integration-box">Jira</div>
+                <div className="integrations-visual">
+                  <div className="int-brick-wrap">
+                    {/* Top ghost row - brick offset */}
+                    <div className="int-brick-row int-brick-top">
+                      <div className="int-gc"></div><div className="int-gc"></div>
+                      <div className="int-gc"></div><div className="int-gc"></div>
+                    </div>
+                    {/* Main 5-col rows with side ghosts */}
+                    <div className="int-core">
+                      <div className="int-gc int-side-l"></div>
+                      <div className="int-cell"><LogoZohoDesk /></div>
+                      <div className="int-cell"><LogoIntercom /></div>
+                      <div className="int-cell"><LogoGorgias /></div>
+                      <div className="int-gc int-side-r"></div>
+
+                      <div className="int-gc int-side-l"></div>
+                      <div className="int-cell"><LogoZendesk /></div>
+                      <div className="int-cell int-fin-cell"><LogoFin /></div>
+                      <div className="int-cell"><LogoSalesforce /></div>
+                      <div className="int-gc int-side-r"></div>
+
+                      <div className="int-gc int-side-l"></div>
+                      <div className="int-cell"><LogoSprinklr /></div>
+                      <div className="int-cell"><LogoFront /></div>
+                      <div className="int-gc int-side-r"></div>
+
+                      <div className="int-gc int-side-l"></div>
+                      <div className="int-cell"><LogoHubSpot /></div>
+                      <div className="int-cell"><LogoFreshdesk /></div>
+                      <div className="int-cell"><LogoJira /></div>
+                      <div className="int-gc int-side-r"></div>
+                    </div>
+                    {/* Bottom ghost row - brick offset */}
+                    <div className="int-brick-row int-brick-bottom">
+                      <div className="int-gc"></div><div className="int-gc"></div>
+                      <div className="int-gc"></div><div className="int-gc"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
 
             <section id="technology" className="card-section dark-card mt-6 has-borders">
               <CardBrackets />
-              <SectionLabel text="SUPERIOR TECHNOLOGY" />
+              <SectionLabel text="SUPERIOR TECHNOLOGY" withDivider />
               
               <div className="tech-layout">
                  <div className="tech-left">
@@ -452,7 +632,7 @@ function App() {
 
             <section id="team" className="card-section dark-card mt-6 has-borders">
               <CardBrackets />
-              <SectionLabel text="AI TEAM" />
+              <SectionLabel text="AI TEAM" withDivider />
               
               <div className="content-grid two-col mb-16">
                 <div>

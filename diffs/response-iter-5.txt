@@ -1,0 +1,2091 @@
+Here are the completely updated `App.jsx` and `App.css` files with fixes for the typography scales (massively increasing the size of section headings to match the reference), correctly aligning the layout of the pricing and bottom CTA sections, refining bracket card spacings, and improving navigation styles.
+
+### App.jsx
+```jsx
+import React, { useState, useEffect } from 'react';
+import './App.css';
+
+const IconClose = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <path d="M6 6l12 12M6 18L18 6"></path>
+  </svg>
+);
+
+const IconLogo = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 58 58" className="h-8 w-8">
+    <path fill="currentColor" d="M53.254.102c-.33 0-.65.132-.884.366L38.246 14.592c-.602.601-1.615.018-1.393-.806l3.245-12.112A1.25 1.25 0 0 0 38.89.1h-4.965c-.565 0-1.06.38-1.208.926l-2.49 9.29a3.34 3.34 0 0 0 0 1.725l1.786 6.668a10.28 10.28 0 0 0 7.266 7.266l6.668 1.787c.565.15 1.16.15 1.724 0l9.291-2.49a1.25 1.25 0 0 0 .926-1.209v-4.967c0-.82-.775-1.417-1.567-1.204L44.2 21.14c-.822.22-1.406-.792-.804-1.394L57.522 5.62c.234-.234.366-.553.366-.884A4.63 4.63 0 0 0 53.254.102m0 57.789c-.33 0-.65-.132-.884-.365L38.246 43.401c-.602-.602-1.615-.019-1.393.805l3.245 12.113a1.25 1.25 0 0 1-1.208 1.574h-4.965c-.565 0-1.06-.38-1.208-.926l-2.49-9.291a3.35 3.35 0 0 1 0-1.725l1.786-6.668a10.28 10.28 0 0 1 7.266-7.266l6.668-1.787a3.35 3.35 0 0 1 1.724 0l9.291 2.491c.546.146.926.641.926 1.208v4.967c0 .82-.775 1.417-1.567 1.204L44.2 36.854c-.822-.22-1.406.791-.804 1.393l14.126 14.126c.234.234.366.553.366.884a4.64 4.64 0 0 1-4.64 4.641zM4.746.102c.331 0 .65.132.884.366l14.124 14.124c.602.601 1.616.018 1.394-.806L17.903 1.674A1.25 1.25 0 0 1 19.11.102h4.965c.564 0 1.06.38 1.208.926l2.49 9.29c.15.566.15 1.16 0 1.725l-1.787 6.669a10.28 10.28 0 0 1-7.265 7.265l-6.669 1.787a3.35 3.35 0 0 1-1.724 0l-9.29-2.49a1.24 1.24 0 0 1-.934-1.204v-4.967c0-.82.778-1.42 1.57-1.206l12.117 3.247c.824.22 1.407-.791.803-1.393L.471 5.627a1.26 1.26 0 0 1-.366-.884A4.64 4.64 0 0 1 4.746.103Zm0 57.789c.331 0 .65-.132.884-.366l14.124-14.123c.602-.602 1.616-.019 1.394.805L17.903 56.32a1.25 1.25 0 0 0 1.208 1.574h4.965c.564 0 1.06-.38 1.208-.925l2.49-9.291a3.35 3.35 0 0 0 0-1.725l-1.787-6.668a10.28 10.28 0 0 0-7.265-7.266l-6.669-1.787a3.35 3.35 0 0 0-1.724 0l-9.29 2.491a1.24 1.24 0 0 0-.934 1.201v4.967c0 .82.778 1.42 1.57 1.206l12.117-3.247c.824-.22 1.407.792.803 1.393L.471 52.368a1.25 1.25 0 0 0-.366.885 4.64 4.64 0 0 0 4.641 4.64z"></path>
+  </svg>
+);
+
+const IconChevron = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M15.4798 10C15.6895 10 15.806 10.2425 15.6751 10.4062L12.1952 14.756C12.0951 14.8811 11.9049 14.8811 11.8048 14.756L8.32494 10.4062C8.19399 10.2425 8.31053 10 8.52016 10L15.4798 10Z" fill="currentColor"></path>
+  </svg>
+);
+
+const IconMenu = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"></path>
+  </svg>
+);
+
+const IconArrowRight = () => (
+  <svg width="12" height="12" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.17812 12.047L13.725 7.5001L9.17812 2.95322C8.86875 2.64385 8.3625 2.64385 8.05313 2.95322C7.74375 3.2626 7.74375 3.76885 8.05313 4.07822L10.6781 6.70322H1.875V8.29697H10.6781L8.05313 10.922C7.89375 11.0813 7.81875 11.2782 7.81875 11.4845C7.81875 11.6907 7.89375 11.897 8.05313 12.047C8.3625 12.3563 8.86875 12.3563 9.17812 12.047Z" fill="currentColor"></path>
+  </svg>
+);
+
+const SectionLabel = ({ text }) => (
+  <div className="section-label-container">
+    <div className="section-label">
+      <div className="label-square"></div>
+      <span className="label-text">{text}</span>
+    </div>
+    <div className="label-line"></div>
+  </div>
+);
+
+const CardBrackets = () => (
+  <>
+    <div className="bracket bracket-tl"></div>
+    <div className="bracket bracket-tr"></div>
+    <div className="bracket bracket-bl"></div>
+    <div className="bracket bracket-br"></div>
+  </>
+);
+
+function App() {
+  const [activeSection, setActiveSection] = useState('01');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      
+      const sections = ['capabilities', 'performance', 'integrations', 'technology', 'team', 'pricing'];
+      for (const section of sections.reverse()) {
+        const el = document.getElementById(section);
+        if (el && window.scrollY >= el.offsetTop - 300) {
+          const index = sections.indexOf(section) + 1;
+          setActiveSection(`0${index}`);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="app-container">
+      <div className="top-banner">
+        <a href="#" className="banner-content">
+          <span className="banner-text">Join us for a major Fin announcement. Live from Paris and virtually — March 24, 2026</span>
+          <span className="banner-link">Learn more</span>
+        </a>
+        <button className="banner-close" aria-label="Close banner">
+          <IconClose />
+        </button>
+      </div>
+
+      <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          <div className="nav-left mobile-only">
+            <a href="/" className="logo-link"><IconLogo /></a>
+            <div className="nav-divider"></div>
+            <a href="#" className="nav-link intercom-link">
+              Intercom
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3.46875 1.875C3.175 1.875 2.9375 2.1125 2.9375 2.40625C2.9375 2.7 3.175 2.93751 3.46875 2.93751H6.3125L1.5 7.75L2.25 8.5L7.0625 3.6875V6.53126C7.0625 6.82501 7.3 7.06249 7.59375 7.06249C7.8875 7.06249 8.125 6.82501 8.125 6.53126V1.875H3.46875Z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+
+          <nav className="desktop-nav">
+            <a href="/" className="logo-link"><IconLogo /></a>
+            <ul className="nav-links">
+              <li><button className="nav-dropdown">Product <IconChevron /></button></li>
+              <li><button className="nav-dropdown">AI Technology <IconChevron /></button></li>
+              <li><a href="#" className="nav-link">Customers</a></li>
+              <li><button className="nav-dropdown">Resources <IconChevron /></button></li>
+              <li><a href="#" className="nav-link">Pricing</a></li>
+            </ul>
+            <ul className="nav-actions">
+              <li><a href="#" className="nav-link">Contact sales</a></li>
+              <li><a href="#" className="nav-link">View demo</a></li>
+              <li><a href="#" className="btn-primary">Start free trial</a></li>
+            </ul>
+            <div className="nav-divider"></div>
+            <a href="#" className="btn-outline light intercom-btn">
+              Intercom <IconArrowRight />
+            </a>
+          </nav>
+          
+          <div className="mobile-actions mobile-only">
+            <button className="menu-btn"><IconMenu /></button>
+          </div>
+        </div>
+      </header>
+
+      <main className="main-content">
+        <section className="hero-section">
+          <div className="hero-glow"></div>
+          <div className="hero-content relative z-10">
+            <h1 className="hero-title">The #1 AI Agent for<br /><span>all</span> your customer service</h1>
+            <ul className="hero-badges">
+              <li>#1 IN BAKE-OFFS</li>
+              <li>#1 IN BENCHMARKS</li>
+              <li>#1 FOR COMPLEX QUERIES</li>
+              <li>#1 ON G2</li>
+            </ul>
+            <div className="hero-cta mt-6">
+              <a href="#" className="btn-primary large" style={{borderRadius: '8px', padding: '16px 32px'}}>Start free trial</a>
+              <a href="#" className="btn-outline light large" style={{borderRadius: '8px', padding: '16px 32px'}}>View demo</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="ui-mockup-section relative z-10">
+          <div className="ui-mockup-grid">
+            <div className="ui-panel left-panel">
+              <div className="ui-box block-1">
+                <div className="ui-text-sm">CALLING ANNA</div>
+                <div className="ui-text-xs dimmed">+44 7538299372</div>
+              </div>
+              <div className="ui-box block-2">
+                <div className="ui-text-sm">SETTINGS</div>
+                <div className="ui-line mt-2"></div>
+                <div className="ui-line mt-2 w-75"></div>
+              </div>
+              <div className="ui-box block-3 flex-center">
+                <div className="ui-circle-chart">
+                  <div className="ui-chart-inner">
+                    <span className="ui-text-lg">36.5%</span>
+                    <span className="ui-text-xs text-center">RESOLUTION RATE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="ui-panel center-panel">
+              <div className="ui-box main-chat">
+                <div className="chat-header">
+                  <IconLogo /> <span>Fin</span>
+                  <div className="chat-actions">•••</div>
+                </div>
+                <div className="chat-body"></div>
+                <div className="chat-input-area">
+                  <div className="chat-input">Message...</div>
+                  <div className="chat-send">↑</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="ui-panel right-panel">
+              <div className="ui-box block-4">
+                <div className="ui-text-sm mb-2">PERFORMANCE FUNNEL</div>
+                <div className="ui-bar-chart">
+                  <div className="ui-bar" style={{height: '80%'}}></div>
+                  <div className="ui-bar" style={{height: '60%'}}></div>
+                  <div className="ui-bar" style={{height: '40%'}}></div>
+                  <div className="ui-bar" style={{height: '20%'}}></div>
+                </div>
+              </div>
+              <div className="ui-box block-5">
+                <div className="ui-text-sm mb-2">FIN AI AGENT PERFORMANCE OVER TIME</div>
+                <div className="ui-line-chart-placeholder">
+                  <svg viewBox="0 0 100 50" preserveAspectRatio="none" className="chart-line">
+                    <path d="M0,40 Q10,30 20,35 T40,20 T60,25 T80,10 T100,5" fill="none" stroke="currentColor" strokeWidth="1"/>
+                    <path d="M0,45 Q15,40 30,35 T50,30 T70,15 T100,10" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="logo-wall-section relative z-10">
+          <div className="logo-grid">
+            <div className="logo-item">MERCURY</div>
+            <div className="logo-item">miro</div>
+            <div className="logo-item">monday.com</div>
+            <div className="logo-item">RIOT GAMES</div>
+            <div className="logo-item">Rocket Money</div>
+            <div className="logo-item">shutterstock</div>
+            <div className="logo-item">snowflake</div>
+            <div className="logo-item">synthesia</div>
+            <div className="logo-item">toast</div>
+            <div className="logo-item">Vanta</div>
+            <div className="logo-item">WHOOP</div>
+            <div className="logo-item">xero</div>
+          </div>
+        </section>
+
+        <div className="content-layout relative z-10">
+          <aside className="sticky-sidebar">
+            <ul className="sidebar-nav">
+              <li className={activeSection === '01' ? 'active' : ''}><a href="#capabilities">01 CAPABILITIES</a></li>
+              <li className={activeSection === '02' ? 'active' : ''}><a href="#performance">02 PERFORMANCE</a></li>
+              <li className={activeSection === '03' ? 'active' : ''}><a href="#integrations">03 INTEGRATIONS</a></li>
+              <li className={activeSection === '04' ? 'active' : ''}><a href="#technology">04 TECHNOLOGY</a></li>
+              <li className={activeSection === '05' ? 'active' : ''}><a href="#team">05 AI TEAM</a></li>
+              <li className={activeSection === '06' ? 'active' : ''}><a href="#pricing">06 PRICING</a></li>
+            </ul>
+          </aside>
+
+          <div className="scroll-content">
+            
+            <section id="capabilities" className="card-section light-card">
+              <CardBrackets />
+              <SectionLabel text="CAPABILITIES" />
+              <h2 className="section-title text-black text-massive">
+                Fin resolves the most<br/>complex queries on<br/>every channel
+              </h2>
+              
+              <div className="content-grid two-col">
+                <div className="text-block">
+                  <span className="mono-label">01</span>
+                  <p>Fin handles even the most complex queries through a continuous improvement loop called the Fin Flywheel. Train Fin on your Procedures, knowledge, and policies, test performance before launch, deploy across every channel, then analyze and improve with AI-powered Insights—so every query is resolved accurately and consistently.</p>
+                  <button className="btn-outline black mt-6" style={{borderRadius: '8px'}}>Explore all capabilities</button>
+                </div>
+                <div className="empty-block"></div>
+              </div>
+
+              <div className="dot-grid-placeholder"></div>
+
+              <div className="features-grid">
+                <div className="feature-item">
+                  <h3>1. Train</h3>
+                  <p>Train Fin to resolve even the most complex queries with your Procedures, knowledge and policies.</p>
+                  <a href="#" className="link-underline">Learn more</a>
+                </div>
+                <div className="feature-item">
+                  <h3>2. Test</h3>
+                  <p>Run fully simulated customer conversations from start to finish to see exactly how Fin will behave before going live.</p>
+                  <a href="#" className="link-underline">Learn more</a>
+                </div>
+                <div className="feature-item">
+                  <h3>3. Deploy</h3>
+                  <p>Set Fin live across every channel—voice, email, chat, and social—for consistent support wherever customers reach out.</p>
+                  <a href="#" className="link-underline">Learn more</a>
+                </div>
+                <div className="feature-item">
+                  <h3>4. Analyze</h3>
+                  <p>Use AI-powered Insights to analyze and improve Fin's performance and deliver better customer experiences.</p>
+                  <a href="#" className="link-underline">Learn more</a>
+                </div>
+              </div>
+            </section>
+
+            <section id="performance" className="card-section light-card mt-6">
+              <CardBrackets />
+              <SectionLabel text="UNRIVALED PERFORMANCE" />
+              <h2 className="section-title text-black text-massive">
+                Fin outperforms<br/>every competitor.<br/><span>Every time.</span>
+              </h2>
+
+              <div className="chart-container">
+                <div className="chart-label">FIG 2.A - FIN'S AVERAGE RESOLUTION RATE INCREASES 1% EVERY MONTH</div>
+                <div className="line-chart-area">
+                  <div className="grid-lines-h">
+                    <span>40%</span><span>30%</span><span>20%</span><span>10%</span>
+                  </div>
+                  <div className="chart-path-wrapper">
+                     <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+                        <path d="M0,250 L100,230 L200,240 L300,200 L400,210 L500,150 L600,160 L700,100 L800,120 L900,50 L1000,40" fill="none" stroke="#e0dcd2" strokeWidth="2"/>
+                        <path d="M0,280 L100,260 L200,270 L300,240 L400,250 L500,190 L600,200 L700,150 L800,170 L900,100 L1000,90" fill="none" stroke="#e0dcd2" strokeWidth="1" strokeDasharray="4,4"/>
+                     </svg>
+                  </div>
+                  <div className="grid-lines-v">
+                    <span>MAY 2023</span><span>JUN 2023</span><span>JUL 2023</span><span>...</span><span>DEC 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="performance-bottom-grid">
+                <div className="chart-box">
+                  <div className="chart-label">FIG 2.B - FIN WINS EVERY HEAD-TO-HEAD TEST ON RESOLUTION RATE</div>
+                  <div className="bar-chart-area">
+                    <div className="y-axis"><span>80%</span><span>60%</span><span>40%</span></div>
+                    <div className="bars">
+                      <div className="bar-group">
+                        <div className="bar outline" style={{height: '49%'}}><span>49%</span></div>
+                        <div className="bar outline" style={{height: '50%'}}><span>50%</span></div>
+                        <div className="bar solid orange" style={{height: '73%'}}><span>73%</span></div>
+                        <div className="bar-labels">
+                           <span>DECAGON</span><span>FORETHOUGHT</span><span>FIN</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="chart-caption">
+                      Resolution rate based on independent testing conducted by Fin customers.
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="testimonial-box">
+                  <div className="chart-label">FIG 2.C - FINTECH CUSTOMER</div>
+                  <div className="testimonial-content">
+                    <div className="avatar-placeholder"></div>
+                    <blockquote>
+                      "Fin is in a completely different league. It's now involved in 99% of conversations and <mark>successfully resolves up to 65% end-to-end – even the more complex ones.</mark>"
+                    </blockquote>
+                    <cite>Angelo Livanos, Vice President of Global Support at Lightspeed</cite>
+                  </div>
+                </div>
+              </div>
+
+              <div className="video-section mt-12">
+                 <div className="video-player">
+                    <div className="video-content-top">
+                       <h2>ANTHROP\C</h2>
+                       <p>"If you're debating whether to build your own AI solution or buy one, my advice would be to buy – and specifically, buy Fin."</p>
+                    </div>
+                    <button className="play-btn">
+                       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg> PLAY
+                    </button>
+                 </div>
+                 
+                 <div className="video-playlist mt-4">
+                    <div className="playlist-grid">
+                       <div className="playlist-item active">
+                          <div className="thumb gray-box"></div>
+                          <div className="info">
+                             <span className="mono-label" style={{color: 'rgba(0,0,0,0.5)', fontSize: '0.65rem'}}>NOW PLAYING</span>
+                             <h4 style={{color: '#000'}}>Build vs. buy: Why Anthropic chose Fin</h4>
+                          </div>
+                       </div>
+                       <div className="playlist-item">
+                          <div className="thumb gray-box"></div>
+                          <div className="info">
+                             <span className="mono-label" style={{color: 'rgba(0,0,0,0.5)', fontSize: '0.65rem'}}>PLAY NEXT</span>
+                             <h4 style={{color: '#000'}}>AI at enterprise scale: Why...</h4>
+                          </div>
+                       </div>
+                       <div className="playlist-item">
+                          <div className="thumb gray-box"></div>
+                          <div className="info">
+                             <span className="mono-label" style={{color: 'rgba(0,0,0,0.5)', fontSize: '0.65rem'}}>PLAY NEXT</span>
+                             <h4 style={{color: '#000'}}>How Rocket Money operationalized...</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+            </section>
+
+            <section id="integrations" className="card-section dark-card mt-6 has-borders">
+              <CardBrackets />
+              <SectionLabel text="SEAMLESS INTEGRATION" />
+              <h2 className="section-title text-massive">Fin works with<br/>any helpdesk</h2>
+              
+              <div className="content-grid two-col">
+                <div className="text-block pt-8">
+                  <p className="with-number"><span className="mono-label">03</span> Set up Fin with your existing helpdesk or as part of the Intercom Customer Service Suite—with support for additional platforms and custom channels.</p>
+                  
+                  <h4 className="sub-heading mt-8">KEY FEATURES</h4>
+                  <ul className="check-list">
+                    <li>Set up in under an hour.</li>
+                    <li>Integrates into your current support channels—tickets, email, live chat, and more.</li>
+                    <li>Follows your existing assignment rules, automations, and reporting.</li>
+                    <li>Escalates to agents in your preferred inbox.</li>
+                  </ul>
+                  
+                  <div className="link-tabs mt-8">
+                    <a href="#" className="active">Intercom Suite</a>
+                    <a href="#">Fin for Zendesk</a>
+                    <a href="#">Fin for Salesforce</a>
+                  </div>
+                </div>
+                
+                <div className="integrations-grid">
+                   <div className="integration-box">Zoho Desk</div>
+                   <div className="integration-box">intercom</div>
+                   <div className="integration-box">gorgias</div>
+                   <div className="integration-box">zendesk</div>
+                   <div className="integration-box highlight"><IconLogo /> Fin</div>
+                   <div className="integration-box">salesforce</div>
+                   <div className="integration-box">sprinklr</div>
+                   <div className="integration-box">Front</div>
+                   <div className="integration-box">HubSpot</div>
+                   <div className="integration-box">freshdesk</div>
+                   <div className="integration-box">Jira</div>
+                </div>
+              </div>
+            </section>
+
+            <section id="technology" className="card-section dark-card mt-6 has-borders">
+              <CardBrackets />
+              <SectionLabel text="SUPERIOR TECHNOLOGY" />
+              
+              <div className="tech-layout">
+                 <div className="tech-left">
+                    <h2 className="section-title text-massive">Powered by the<br/>Fin AI Engine™</h2>
+                 </div>
+                 <div className="tech-right text-block">
+                    <p className="with-number"><span className="mono-label">04</span> The Fin AI Engine™ is a patented AI architecture specifically engineered for complex customer service queries. Every layer is optimized for accuracy, speed, and reliability—so Fin can resolve more conversations, more effectively than competing AI Agents.</p>
+                    <button className="btn-outline light mt-6" style={{borderRadius: '8px'}}>Learn more</button>
+                 </div>
+              </div>
+
+              <div className="diagram-container mt-12">
+                 <div className="diagram-col text-right">
+                    <div className="diagram-item">
+                       <span className="mono-label">[4.A.1] REFINE THE QUERY</span>
+                       <p>In order to optimize the accuracy of an answer that an LLM generates, the inputs the LLM receives must be refined for comprehension.</p>
+                    </div>
+                    <div className="diagram-item mt-12">
+                       <span className="mono-label">[4.A.3] RERANK FOR PRECISION</span>
+                       <p>The reranking process, powered by our proprietary fin-cx-reranker model, scores retrieved content for relevance and accuracy, then selects the optimal pieces for the LLM to use.</p>
+                       <div className="powered-by"><IconLogo/> POWERED BY FIN-CX</div>
+                    </div>
+                    <div className="diagram-item mt-12">
+                       <span className="mono-label">[4.A.5] VALIDATE ACCURACY</span>
+                       <p>In the final step, the Fin AI Engine™ checks whether the LLM output meets response accuracy and safety standards.</p>
+                    </div>
+                 </div>
+
+                 <div className="diagram-center">
+                    <div className="tech-stack-visual">
+                       <div className="stack-layer label-left">REFINE THE QUERY</div>
+                       <div className="stack-layer label-right highlight text-orange">RETRIEVE RELEVANT CONTENT</div>
+                       <div className="stack-layer label-left">RERANK FOR PRECISION</div>
+                       <div className="stack-layer label-right">GENERATE A RESPONSE</div>
+                       <div className="stack-layer label-left">VALIDATE ACCURACY</div>
+                       <div className="stack-layer label-right">ENGINE OPTIMIZATION</div>
+                       
+                       <div className="core-graphics">
+                          <div className="core-shape shape-1"></div>
+                          <div className="core-shape shape-2 orange"></div>
+                          <div className="core-shape shape-3"></div>
+                          <div className="core-shape shape-4"></div>
+                          <div className="core-shape shape-5"></div>
+                          <div className="core-shape shape-6"></div>
+                       </div>
+                    </div>
+                 </div>
+
+                 <div className="diagram-col text-left">
+                    <div className="diagram-item mt-8">
+                       <span className="mono-label orange">[4.A.2] RETRIEVE RELEVANT CONTENT</span>
+                       <p>The retrieval process, powered by our proprietary fin-cx-retrieval model, searches across all knowledge sources and selects the most relevant information for accurate answers.</p>
+                       <div className="powered-by"><IconLogo/> POWERED BY FIN-CX</div>
+                    </div>
+                    <div className="diagram-item mt-12">
+                       <span className="mono-label">[4.A.4] GENERATE A RESPONSE</span>
+                       <p>Using a bespoke generative process, it creates answers with the highest resolution potential. Custom Guidance controls tone and behavior, ensuring responses align with your brand.</p>
+                    </div>
+                    <div className="diagram-item mt-12">
+                       <span className="mono-label">[4.A.6] ENGINE OPTIMIZATION</span>
+                       <p>To calibrate performance, the Fin AI Engine™ uses integrated tools that optimize answer generation, efficiency, precision, and coverage.</p>
+                    </div>
+                 </div>
+              </div>
+              
+              <div className="trust-badges-row mt-12">
+                 <div className="mono-label text-center mb-6">TRUSTED AND FULLY CERTIFIED</div>
+                 <div className="badges-flex">
+                    <div className="badge-circle">ISO<br/>27018</div>
+                    <div className="badge-circle">ISO<br/>27701</div>
+                    <div className="badge-rect">GDPR<br/>COMPLIANT</div>
+                    <div className="badge-rect">CCPA<br/>COMPLIANT</div>
+                    <div className="badge-circle">ISO<br/>27001</div>
+                    <div className="badge-circle">ISO<br/>27018</div>
+                    <div className="badge-circle">ISO<br/>27701</div>
+                 </div>
+              </div>
+            </section>
+
+            <section id="team" className="card-section dark-card mt-6 has-borders">
+              <CardBrackets />
+              <SectionLabel text="AI TEAM" />
+              
+              <div className="content-grid two-col mb-12">
+                <div>
+                   <h2 className="section-title text-massive">Built by a world-<br/>class team of AI<br/>experts</h2>
+                </div>
+                <div className="text-block pt-4">
+                  <p className="with-number"><span className="mono-label">05</span> The AI Group, an expert team of over 40 machine learning scientists, engineers and designers, continuously optimize Fin's performance through cutting-edge research, experimentation, and innovation—and publish their insights in the <a href="#" className="link-underline-white">AI research blog</a>.</p>
+                </div>
+              </div>
+
+              <div className="mono-label mb-8">AI GROUP LEADERSHIP</div>
+              
+              <div className="team-grid">
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Pratik Bothra</h4>
+                    <p>Principal Machine<br/>Learning Engineer</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Rob Clancy</h4>
+                    <p>Staff Product<br/>Engineer</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Mario Kostelac</h4>
+                    <p>Principal Machine<br/>Learning Engineer</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Molly Mahar</h4>
+                    <p>Principal AI Designer</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Brian McDonnell</h4>
+                    <p>Director, Engineering</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Fedor Parfenov</h4>
+                    <p>Staff Machine<br/>Learning Scientist</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Fergal Reid</h4>
+                    <p>Chief AI Officer</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Pedro Tabacof</h4>
+                    <p>Principal Machine<br/>Learning Scientist</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Alexey Tarasov</h4>
+                    <p>Senior Manager, ML<br/>Engineering</p>
+                 </div>
+                 <div className="team-member">
+                    <div className="avatar"></div>
+                    <h4>Rati Zvirawa</h4>
+                    <p>Director, Product<br/>Management</p>
+                 </div>
+              </div>
+            </section>
+
+            <section className="pricing-header mt-12 mb-8 text-center">
+               <div className="hero-badges justify-center">
+                 <li>#1 AI AGENT ON G2</li>
+                 <li>✓ FIN MILLION DOLLAR GUARANTEE ⓘ</li>
+               </div>
+            </section>
+
+            <section id="pricing" className="pricing-cards-section">
+               <div className="pricing-grid">
+                  <div className="pricing-card card-section dark-card has-borders">
+                     <CardBrackets />
+                     <h3 className="card-title">Fin with your<br/>current helpdesk</h3>
+                     <p className="card-desc">Fin AI Agent works seamlessly with any helpdesk, including Zendesk, Salesforce, HubSpot, and more.</p>
+                     
+                     <div className="price-block">
+                        <span className="price">$0.99</span>
+                        <span className="price-unit">PER OUTCOME ⓘ<br/>50 OUTCOMES PER MONTH<br/>MINIMUM</span>
+                     </div>
+
+                     <div className="card-actions">
+                        <button className="btn-primary" style={{borderRadius: '8px'}}>Free 14 day trial</button>
+                        <a href="#" className="link-underline-white">Get a demo</a>
+                     </div>
+                  </div>
+
+                  <div className="pricing-card card-section dark-card has-borders">
+                     <CardBrackets />
+                     <h3 className="card-title">Fin with<br/>Intercom's Helpdesk</h3>
+                     <p className="card-desc">Combine Fin AI Agent with Intercom's Helpdesk to get the full Intercom Customer Service Suite.</p>
+                     
+                     <div className="price-block multi">
+                        <div className="price-row">
+                           <span className="price">$0.99</span>
+                           <span className="price-unit">PER<br/>OUTCOME ⓘ</span>
+                        </div>
+                        <div className="plus">+</div>
+                        <div className="price-row">
+                           <span className="price">$29</span>
+                           <span className="price-unit">PER HELPDESK SEAT<br/>PER MONTH <a href="#" className="link-underline-white">(SEE ALL PLANS)</a></span>
+                        </div>
+                     </div>
+
+                     <div className="card-actions mt-auto">
+                        <button className="btn-outline light" style={{borderRadius: '8px'}}>Free 14 day trial</button>
+                        <a href="#" className="link-underline-white">Get a demo</a>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+          </div>
+        </div>
+
+        <section className="bottom-cta-section relative z-10">
+          <div className="flare-bg"></div>
+          <div className="cta-content relative z-10">
+            <h2 className="cta-title text-center">
+              <span className="italic-text">with the</span>
+              #1 AI Agent today
+            </h2>
+            <div className="hero-cta mt-8 relative z-10">
+              <a href="#" className="btn-primary large" style={{borderRadius: '8px', padding: '16px 32px'}}>Start free trial</a>
+              <a href="#" className="btn-outline light large" style={{borderRadius: '8px', padding: '16px 32px'}}>View demo</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="customer-agent-section card-section dark-card has-borders max-w relative z-10">
+           <CardBrackets />
+           <SectionLabel text="CUSTOMER AGENT" />
+           <div className="content-grid two-col items-center">
+              <h2 className="section-title" style={{marginBottom: 0}}>
+                Our vision—one Agent for the<br/>entire customer experience
+              </h2>
+              <p className="text-lg text-secondary">Imagine a single Customer Agent across the whole customer journey. A future that opens the door to a previously-unimaginable level of customer experience. <a href="#" className="link-underline-white">Learn more</a></p>
+           </div>
+        </section>
+
+      </main>
+
+      <footer className="footer relative z-10">
+         <div className="footer-grid">
+            <div className="footer-col">
+               <h4>PRODUCT</h4>
+               <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Fin Overview</a></li>
+                  <li><a href="#">Channels</a></li>
+                  <li><a href="#">Trust and Reliability</a></li>
+                  <li><a href="#">Integrations</a></li>
+                  <li><a href="#">Voice</a></li>
+                  <li><a href="#">Procedures</a></li>
+                  <li><a href="#">Insights</a></li>
+                  <li><a href="#">Train</a></li>
+                  <li><a href="#">Testing</a></li>
+                  <li><a href="#">Intercom Suite ↗</a></li>
+                  <li><a href="#">Fin for Zendesk</a></li>
+                  <li><a href="#">Fin for Salesforce</a></li>
+                  <li><a href="#">Customer Agent</a></li>
+                  <li><a href="#">Pricing</a></li>
+               </ul>
+            </div>
+            <div className="footer-col">
+               <h4>AI TECHNOLOGY</h4>
+               <ul>
+                  <li><a href="#">AI Engine</a></li>
+                  <li><a href="#">Models</a></li>
+                  <li><a href="#">AI Research ↗</a></li>
+               </ul>
+            </div>
+            <div className="footer-col">
+               <h4>SOLUTIONS</h4>
+               <ul>
+                  <li><a href="#">Financial Services</a></li>
+                  <li><a href="#">Retail and ecommerce</a></li>
+                  <li><a href="#">Technology</a></li>
+                  <li><a href="#">Enterprise</a></li>
+                  <li><a href="#">Gaming</a></li>
+               </ul>
+            </div>
+            <div className="footer-col">
+               <h4>RESOURCES</h4>
+               <ul>
+                  <li><a href="#">Customers</a></li>
+                  <li><a href="#">Pioneer ↗</a></li>
+                  <li><a href="#">Building frontier AI products ↗</a></li>
+                  <li><a href="#">Webinars ↗</a></li>
+                  <li><a href="#">Fin 3</a></li>
+                  <li><a href="#">Built For You ↗</a></li>
+                  <li><a href="#">Product Updates</a></li>
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Safety and Security ↗</a></li>
+                  <li><a href="#">Professional Services</a></li>
+                  <li><a href="#">Ideas Blog ↗</a></li>
+                  <li><a href="#">AI Agent Blueprint</a></li>
+                  <li><a href="#">Learn Blog</a></li>
+                  <li><a href="#">2026 Transformation Report ↗</a></li>
+                  <li><a href="#">Customer Service Glossary</a></li>
+               </ul>
+            </div>
+            <div className="footer-col">
+               <h4>FIN IN ACTION</h4>
+               <ul>
+                  <li><a href="#">View demo</a></li>
+                  <li><a href="#">Free trial</a></li>
+                  <li><a href="#">Contact sales</a></li>
+                  <li><a href="#">Sign in</a></li>
+               </ul>
+               <h4 className="mt-8">COMPANY</h4>
+               <ul>
+                  <li><a href="#">Careers ↗</a></li>
+               </ul>
+            </div>
+         </div>
+         
+         <div className="footer-bottom">
+            <div className="footer-bottom-left">
+               <span>An Intercom Product</span>
+            </div>
+            <div className="footer-bottom-links">
+               <a href="#">Terms</a>
+               <a href="#">Privacy</a>
+               <a href="#">Security</a>
+               <a href="#" className="privacy-choices"><svg viewBox="0 0 30 14" width="24" height="12"><rect width="30" height="14" rx="7" fill="#0052cc"/><circle cx="7" cy="7" r="5" fill="white"/><path d="M19 4L25 10M25 4L19 10" stroke="white" strokeWidth="1.5"/></svg> Your Privacy Choices</a>
+            </div>
+         </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### App.css
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,300;1,400&display=swap');
+
+:root {
+  --bg-main: #020917;
+  --bg-banner: #1A1A1A;
+  --bg-card-light: #F5F4EF;
+  --bg-card-dark: #020917;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-dark: #000000;
+  --text-dark-secondary: #313130;
+  
+  --accent-orange: #FF5C00;
+  
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-dark: rgba(0, 0, 0, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --header-height: 60px;
+  --banner-height: 40px;
+  --max-width: 1600px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, .serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  display: block;
+  font-weight: 500;
+}
+
+.text-black .mono-label {
+  color: rgba(0,0,0,0.6);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .section-title { font-size: 4rem; }
+}
+
+@media (min-width: 1280px) {
+  .section-title { font-size: 4.5rem; margin-bottom: 48px; }
+}
+
+.text-huge {
+  font-size: 4rem !important;
+  line-height: 1.05;
+}
+
+@media (min-width: 1280px) {
+  .text-huge {
+    font-size: 5rem !important;
+    letter-spacing: -0.03em;
+  }
+}
+
+.text-massive {
+  font-size: 4.5rem !important;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 1280px) {
+  .text-massive {
+    font-size: 6.5rem !important;
+  }
+}
+
+.text-white { color: white !important; }
+
+.indent { margin-left: 10%; }
+.indent-more { margin-left: 20%; }
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  margin-top: -2px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.max-w {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.relative { position: relative; }
+.z-10 { z-index: 10; }
+
+.top-banner {
+  background-color: var(--bg-banner);
+  color: rgba(255,255,255,0.8);
+  height: var(--banner-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.banner-content {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.banner-link {
+  position: relative;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.5);
+  text-underline-offset: 4px;
+  color: white;
+}
+
+.banner-link:hover {
+  text-decoration-color: white;
+}
+
+.banner-close {
+  position: absolute;
+  right: 16px;
+  opacity: 0.6;
+}
+
+.banner-close:hover {
+  opacity: 1;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: transparent;
+  transition: background-color 0.3s, border-bottom 0.3s;
+}
+
+.header.scrolled {
+  background-color: rgba(2, 9, 23, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desktop-nav {
+  display: none;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav { display: flex; }
+  .mobile-only { display: none !important; }
+}
+
+.nav-links {
+  display: flex;
+  margin-left: 16px;
+}
+
+.nav-links li {
+  margin: 0 4px;
+}
+
+.nav-link, .nav-dropdown {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-dropdown:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.nav-actions li {
+  margin: 0;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: #e6e6e6;
+}
+
+.btn-primary.large {
+  padding: 16px 24px;
+  font-size: 1.125rem;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-outline.light {
+  border-color: rgba(255,255,255,0.3);
+  color: #ffffff;
+}
+
+.btn-outline.light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.btn-outline.black {
+  border-color: #000000;
+  color: #000000;
+}
+
+.btn-outline.black:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn-outline.large {
+  padding: 16px 24px;
+  font-size: 1.125rem;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-light);
+  margin: 0 16px;
+}
+
+.intercom-btn {
+  gap: 8px;
+  border-radius: 100px;
+  padding: 8px 16px;
+}
+
+.mobile-only {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.intercom-link {
+  font-size: 0.875rem;
+  padding: 8px;
+}
+
+.hero-section {
+  position: relative;
+  padding: 120px 24px 60px;
+  text-align: center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at center, rgba(255, 120, 50, 0.15) 0%, rgba(200, 80, 200, 0.1) 20%, rgba(50, 100, 255, 0.05) 40%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 4rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 40px rgba(255,255,255,0.1);
+}
+
+.hero-title span {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .hero-title { font-size: 5rem; }
+}
+
+@media (min-width: 1280px) {
+  .hero-title { font-size: 6.5rem; letter-spacing: -0.04em; }
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 32px;
+  margin-bottom: 48px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.9);
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ui-mockup-section {
+  padding: 0 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  opacity: 1;
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.ui-mockup-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 24px;
+  height: 450px;
+}
+
+.ui-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ui-box {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 24px;
+  background: rgba(255,255,255,0.02);
+}
+
+.ui-text-sm { font-size: 10px; letter-spacing: 1px; color: #888; margin-bottom: 8px; }
+.ui-text-xs { font-size: 12px; color: #ccc; }
+.ui-text-xs.dimmed { color: #666; }
+.ui-line { height: 20px; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 8px; }
+.w-75 { width: 75%; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+
+.ui-circle-chart {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 15px solid rgba(255,255,255,0.05);
+  border-left-color: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-chart-inner { text-align: center; }
+.ui-text-lg { font-size: 32px; font-weight: 300; display: block; margin-bottom: 4px; }
+.text-center { text-align: center; }
+
+.main-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-actions { margin-left: auto; letter-spacing: 2px; opacity: 0.5; }
+
+.chat-body {
+  flex: 1;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.01));
+}
+
+.chat-input-area {
+  padding: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.chat-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 16px 24px;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-send {
+  background: white;
+  color: black;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold;
+}
+
+.block-4 { height: 220px; }
+.block-5 { flex: 1; }
+
+.ui-bar-chart {
+  display: flex; align-items: flex-end; gap: 8px; height: 140px; padding-top: 20px;
+}
+.ui-bar {
+  flex: 1; background: rgba(255,255,255,0.1); border-top-left-radius: 4px; border-top-right-radius: 4px;
+}
+
+.ui-line-chart-placeholder {
+  height: 160px;
+  width: 100%;
+}
+.chart-line { width: 100%; height: 100%; overflow: visible; }
+
+@media (max-width: 1024px) {
+  .ui-mockup-grid { grid-template-columns: 1fr; }
+  .left-panel, .right-panel { display: none; }
+}
+
+.logo-wall-section {
+  padding: 40px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .logo-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .logo-grid { grid-template-columns: repeat(6, 1fr); gap: 40px 32px; }
+}
+
+.logo-item {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.content-layout {
+  display: flex;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+.sticky-sidebar {
+  display: none;
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  height: calc(100vh - 100px);
+  padding-top: 80px;
+}
+
+@media (min-width: 1024px) {
+  .sticky-sidebar { display: block; }
+}
+
+.sidebar-nav li {
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-nav a {
+  color: rgba(255,255,255,0.4);
+  transition: color 0.2s;
+}
+
+.sidebar-nav a:hover, .sidebar-nav li.active a {
+  color: white;
+}
+
+.scroll-content {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 100px;
+}
+
+@media (min-width: 1024px) {
+  .scroll-content { padding-left: 60px; }
+}
+
+.card-section {
+  position: relative;
+  padding: 80px 40px;
+  margin-bottom: 16px;
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .card-section { padding: 40px 20px; }
+}
+
+@media (min-width: 1024px) {
+  .card-section { padding: 100px 80px; }
+}
+
+.light-card {
+  background-color: var(--bg-card-light);
+  color: var(--text-dark);
+}
+
+.dark-card {
+  background-color: var(--bg-card-dark);
+  color: var(--text-primary);
+}
+
+.dark-card.has-borders {
+  border: 1px solid var(--border-light);
+}
+
+.bracket {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-style: solid;
+  pointer-events: none;
+}
+
+.light-card .bracket { border-color: rgba(0,0,0,0.15); }
+.dark-card .bracket { border-color: rgba(255,255,255,0.15); }
+
+.bracket-tl { top: 30px; left: 30px; border-width: 1px 0 0 1px; }
+.bracket-tr { top: 30px; right: 30px; border-width: 1px 1px 0 0; }
+.bracket-bl { bottom: 30px; left: 30px; border-width: 0 0 1px 1px; }
+.bracket-br { bottom: 30px; right: 30px; border-width: 0 1px 1px 0; }
+
+.section-label-container {
+  margin-bottom: 32px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.label-square {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-orange);
+}
+
+.label-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.light-card .label-text { color: rgba(0,0,0,0.6); }
+.dark-card .label-text { color: rgba(255,255,255,0.6); }
+
+.text-black { color: var(--text-dark); }
+.light-card .section-title { color: #000000; }
+
+.content-grid {
+  display: grid;
+  gap: 40px;
+}
+
+.content-grid.two-col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .content-grid.two-col { grid-template-columns: 1fr 1fr; gap: 80px; }
+}
+
+.text-block p {
+  font-size: 1.25rem;
+  color: var(--text-dark-secondary);
+  line-height: 1.5;
+}
+
+.dark-card .text-block p {
+  color: var(--text-secondary);
+}
+
+.with-number {
+  position: relative;
+}
+
+.with-number .mono-label {
+  display: inline-block;
+  margin-right: 16px;
+  vertical-align: top;
+  margin-top: 4px;
+}
+
+.dot-grid-placeholder {
+  height: 200px;
+  background-image: radial-gradient(rgba(0,0,0,0.2) 1px, transparent 1px);
+  background-size: 32px 32px;
+  margin: 60px 0;
+  border: none;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 600px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .features-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.feature-item h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+}
+
+.feature-item p {
+  color: var(--text-dark-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.link-underline {
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,0.3);
+  text-underline-offset: 4px;
+}
+
+.link-underline-white {
+  font-size: 1rem;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.4);
+  text-underline-offset: 6px;
+  transition: text-decoration-color 0.2s;
+}
+
+.link-underline-white:hover {
+  text-decoration-color: white;
+}
+
+.chart-container {
+  margin: 40px 0;
+}
+
+.chart-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(0,0,0,0.6);
+  margin-bottom: 24px;
+}
+
+.dark-card .chart-label { color: rgba(255,255,255,0.6); }
+
+.line-chart-area {
+  position: relative;
+  height: 350px;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.grid-lines-h {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+
+.grid-lines-h span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.5);
+  transform: translateY(-50%);
+}
+
+.chart-path-wrapper {
+  position: absolute;
+  top: 0; left: 40px; right: 0; bottom: 0;
+}
+
+.chart-path-wrapper svg {
+  width: 100%; height: 100%; overflow: visible;
+}
+
+.grid-lines-v {
+  position: absolute;
+  bottom: -30px; left: 40px; right: 0;
+  display: flex; justify-content: space-between;
+}
+
+.grid-lines-v span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.5);
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  white-space: nowrap;
+}
+
+.performance-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 40px;
+}
+
+@media (min-width: 1024px) {
+  .performance-bottom-grid {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+.chart-box {
+  border-right: 1px solid rgba(0,0,0,0.1);
+  padding-right: 40px;
+}
+
+@media (max-width: 1023px) {
+  .chart-box { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 40px; }
+}
+
+.bar-chart-area {
+  display: flex;
+  height: 300px;
+  position: relative;
+}
+
+.y-axis {
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding-right: 20px;
+  font-family: var(--font-mono); font-size: 0.75rem; color: rgba(0,0,0,0.5);
+}
+
+.bars {
+  flex: 1;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.bar-group {
+  position: absolute;
+  bottom: 0; right: 0;
+  display: flex; gap: 10px; align-items: flex-end;
+  height: 100%; width: 200px;
+}
+
+.bar {
+  flex: 1;
+  position: relative;
+}
+
+.bar.outline {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: none;
+  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.05) 4px, rgba(0,0,0,0.05) 8px);
+}
+
+.bar.solid.orange {
+  background-color: var(--accent-orange);
+  background-image: radial-gradient(white 1.5px, transparent 1.5px);
+  background-size: 6px 6px;
+}
+
+.bar span {
+  position: absolute;
+  top: 10px; left: 0; width: 100%; text-align: center;
+  font-family: var(--font-mono); font-size: 0.75rem;
+}
+
+.bar.solid span {
+  background: white; padding: 2px 4px; margin: 0 4px; top: -10px; transform: translateY(-100%); display: block;
+}
+
+.bar-labels {
+  position: absolute; bottom: -30px; left: 0; width: 100%;
+  display: flex; justify-content: space-between;
+}
+
+.bar-labels span {
+  font-family: var(--font-mono); font-size: 0.75rem; color: rgba(0,0,0,0.6); flex: 1; text-align: center;
+}
+
+.chart-caption {
+  position: absolute;
+  top: 50%; right: 220px;
+  width: 150px;
+  font-size: 0.875rem; color: var(--text-dark-secondary);
+}
+
+.testimonial-box {
+  padding-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .testimonial-box { padding-left: 20px; }
+}
+
+.avatar-placeholder {
+  width: 60px; height: 60px; border-radius: 50%; background: #ddd; margin-bottom: 24px;
+}
+
+blockquote {
+  font-family: var(--font-serif);
+  font-size: 1.5rem; 
+  line-height: 1.4; 
+  color: var(--text-dark); 
+  margin-bottom: 24px; 
+  font-weight: 400;
+}
+
+mark {
+  background-color: var(--accent-orange); color: white; padding: 2px 4px;
+}
+
+cite {
+  font-size: 0.875rem; color: var(--text-dark-secondary); font-style: normal;
+}
+
+.video-player {
+  background-color: #020917;
+  border-radius: 12px;
+  position: relative;
+  display: flex; 
+  flex-direction: column; 
+  padding: 80px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.video-content-top {
+  width: 100%;
+  text-align: left;
+}
+
+.video-content-top h2 { 
+  font-size: 1.25rem; 
+  letter-spacing: 0.1em; 
+  margin-bottom: 32px; 
+  color: white; 
+  font-family: var(--font-sans); 
+  font-weight: 500;
+}
+
+.video-content-top p { 
+  font-size: 2.75rem; 
+  color: white; 
+  max-width: 900px; 
+  line-height: 1.35; 
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.play-btn {
+  margin: 60px auto 0;
+  border: 1px solid rgba(255,255,255,0.3); 
+  padding: 16px 32px; 
+  border-radius: 40px;
+  font-family: var(--font-mono); 
+  font-size: 0.875rem; 
+  letter-spacing: 0.1em;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.play-btn:hover { background: white; color: black; }
+
+.video-playlist {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.playlist-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+
+.playlist-item {
+  padding: 32px 24px; 
+  border-right: 1px solid rgba(0,0,0,0.1);
+  display: flex; gap: 16px; align-items: center; cursor: pointer;
+}
+
+.playlist-item:last-child { border-right: none; }
+.playlist-item.active { background: rgba(0,0,0,0.03); }
+
+.gray-box { background-color: #e0e0e0; }
+.thumb { width: 80px; height: 50px; border-radius: 4px; flex-shrink: 0; }
+.playlist-item h4 { font-size: 1rem; font-weight: 500; margin-top: 8px; line-height: 1.4; }
+
+@media (max-width: 1024px) {
+  .playlist-grid { grid-template-columns: 1fr; }
+  .playlist-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
+}
+
+.sub-heading {
+  font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); margin-bottom: 16px;
+}
+
+.check-list li {
+  position: relative; padding-left: 24px; margin-bottom: 16px; color: var(--text-secondary);
+}
+
+.check-list li::before {
+  content: '✓'; position: absolute; left: 0; color: var(--accent-orange);
+}
+
+.link-tabs {
+  display: flex; gap: 24px; border-bottom: 1px solid var(--border-light);
+}
+
+.link-tabs a {
+  padding-bottom: 12px; color: rgba(255,255,255,0.6); position: relative;
+}
+
+.link-tabs a.active {
+  color: white;
+}
+
+.link-tabs a.active::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background: white;
+}
+
+.integrations-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: 8px; overflow: hidden;
+}
+
+.integration-box {
+  background: var(--bg-card-dark); height: 100px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans); color: rgba(255,255,255,0.5); font-size: 1rem;
+}
+
+.integration-box.highlight {
+  grid-row: span 2; height: auto;
+  flex-direction: column; gap: 16px; color: var(--accent-orange); font-size: 1.75rem; font-weight: 500;
+}
+
+.tech-layout {
+  display: grid; grid-template-columns: 1fr; gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .tech-layout { grid-template-columns: 1fr 1fr; }
+}
+
+.diagram-container {
+  display: grid; grid-template-columns: 1fr; gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .diagram-container { grid-template-columns: 1fr 2fr 1fr; }
+}
+
+.diagram-item p {
+  color: var(--text-secondary); font-size: 0.95rem; margin-top: 12px; line-height: 1.6;
+}
+
+.powered-by {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-orange); margin-top: 16px;
+}
+
+.tech-stack-visual {
+  height: 500px; position: relative; border-left: 1px dashed rgba(255,255,255,0.2); border-right: 1px dashed rgba(255,255,255,0.2);
+  margin: 0 auto; width: 100%; max-width: 300px;
+  display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;
+}
+
+.stack-layer {
+  font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.4);
+  position: absolute; transform: translateY(-50%); letter-spacing: 0.1em; white-space: nowrap;
+}
+
+.label-left { left: 0; transform: translate(-120%, -50%) rotate(-90deg); transform-origin: right center; }
+.label-right { right: 0; transform: translate(120%, -50%) rotate(90deg); transform-origin: left center; }
+.text-orange { color: var(--accent-orange); }
+
+.core-graphics {
+  display: flex; flex-direction: column; gap: 24px; align-items: center; width: 100%;
+}
+
+.core-shape {
+  width: 120px; height: 60px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+  position: relative;
+}
+
+.core-shape::after {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 80px; height: 40px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 50%;
+}
+
+.core-shape.orange { border-color: var(--accent-orange); }
+.core-shape.orange::after { border-color: var(--accent-orange); }
+
+.trust-badges-row .badges-flex {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center;
+}
+
+.badge-circle, .badge-rect {
+  border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); font-family: var(--font-mono); font-size: 0.65rem;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+.badge-circle { width: 80px; height: 80px; border-radius: 50%; }
+.badge-rect { width: 60px; height: 80px; border-radius: 4px; }
+
+.team-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 16px;
+}
+
+@media (min-width: 768px) {
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .team-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+.team-member { text-align: center; }
+
+.avatar {
+  width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 12px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.team-member h4 { font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+.team-member p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.4; }
+
+.pricing-cards-section {
+  margin-bottom: 80px;
+}
+
+.pricing-grid {
+  display: grid; grid-template-columns: 1fr; gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .pricing-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+.pricing-card {
+  display: flex; flex-direction: column;
+}
+
+.pricing-card.card-section {
+  padding: 40px;
+}
+
+@media (min-width: 1024px) {
+  .pricing-card.card-section {
+    padding: 60px;
+  }
+}
+
+.card-title { font-size: 2rem; font-weight: 400; margin-bottom: 16px; font-family: var(--font-serif); }
+.card-desc { color: var(--text-secondary); margin-bottom: 40px; }
+
+.price-block { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.price-block.multi { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+.price { font-size: 4rem; font-weight: 300; line-height: 1; }
+.price-unit { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; line-height: 1.5; }
+
+.price-row { display: flex; align-items: center; gap: 16px; }
+.plus { font-size: 1.5rem; color: rgba(255,255,255,0.5); }
+
+.card-actions { display: flex; align-items: center; gap: 24px; }
+
+.bottom-cta-section {
+  position: relative; padding: 160px 24px; text-align: center; overflow: hidden; min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.flare-bg {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at center top, rgba(255, 255, 255, 0.2) 0%, rgba(150, 100, 255, 0.1) 20%, rgba(255, 100, 100, 0.05) 40%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: white;
+  font-size: 4rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 1024px) {
+  .cta-title { font-size: 6rem; }
+}
+
+.cta-title .italic-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  display: block;
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 1024px) {
+  .cta-title .italic-text { font-size: 5.5rem; margin-bottom: 0px; }
+}
+
+.customer-agent-section {
+  margin-top: 80px; margin-bottom: 80px; padding: 100px 60px;
+}
+
+.text-lg { font-size: 1.25rem; line-height: 1.6; }
+.text-secondary { color: var(--text-secondary); }
+
+.footer {
+  border-top: 1px solid var(--border-light);
+  padding: 80px 24px 40px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.footer-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+.footer-col h4 {
+  font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; margin-bottom: 24px;
+}
+
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col a { color: var(--text-primary); font-size: 0.95rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--text-secondary); }
+
+.footer-bottom {
+  display: flex; flex-direction: column; gap: 24px; border-top: 1px solid var(--border-light); padding-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+
+.footer-bottom-left { color: rgba(255,255,255,0.6); font-size: 0.875rem; }
+
+.footer-bottom-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; font-size: 0.875rem; color: rgba(255,255,255,0.6); }
+.footer-bottom-links a { color: inherit; }
+.footer-bottom-links a:hover { color: white; }
+
+.privacy-choices { display: inline-flex; align-items: center; gap: 8px; }
+
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mt-8 { margin-top: 32px; }
+.mt-12 { margin-top: 48px; }
+.mt-16 { margin-top: 64px; }
+.mt-24 { margin-top: 96px; }
+.mt-32 { margin-top: 128px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+.mb-12 { margin-bottom: 48px; }
+.mb-16 { margin-bottom: 64px; }
+.pt-4 { padding-top: 16px; }
+.pt-8 { padding-top: 32px; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.m-auto { margin-left: auto; margin-right: auto; }
+.mt-auto { margin-top: auto; }
+
+```
