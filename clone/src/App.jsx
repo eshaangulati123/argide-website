@@ -61,6 +61,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('01');
   const [sectionProgress, setSectionProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeEngineStep, setActiveEngineStep] = useState(0);
   const mobileNavRef = React.useRef(null);
 
   const sectionList = [
@@ -112,6 +113,13 @@ function App() {
       }
     }
   }, [activeSection]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveEngineStep(prev => (prev + 1) % 6);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const activeIndex = parseInt(activeSection) - 1;
   const progressPercent = (activeIndex / (sectionList.length - 1)) * 100;
@@ -564,52 +572,53 @@ function App() {
 
               <div className="diagram-container mt-16">
                  <div className="diagram-col text-right">
-                    <div className="diagram-item">
+                    <div className={`diagram-item${activeEngineStep === 0 ? ' active' : ''}`}>
                        <span className="mono-label">[4.A.1] REFINE THE QUERY</span>
                        <p>In order to optimize the accuracy of an answer that an LLM generates, the inputs the LLM receives must be refined for comprehension.</p>
                     </div>
-                    <div className="diagram-item mt-16">
+                    <div className={`diagram-item mt-16${activeEngineStep === 2 ? ' active' : ''}`}>
                        <span className="mono-label">[4.A.3] RERANK FOR PRECISION</span>
                        <p>The reranking process, powered by our proprietary fin-cx-reranker model, scores retrieved content for relevance and accuracy, then selects the optimal pieces for the LLM to use.</p>
                        <div className="powered-by"><IconLogo width="12" height="12"/> POWERED BY FIN-CX</div>
                     </div>
-                    <div className="diagram-item mt-16">
+                    <div className={`diagram-item mt-16${activeEngineStep === 4 ? ' active' : ''}`}>
                        <span className="mono-label">[4.A.5] VALIDATE ACCURACY</span>
                        <p>In the final step, the Fin AI Engine™ checks whether the LLM output meets response accuracy and safety standards.</p>
                     </div>
                  </div>
 
                  <div className="diagram-center">
-                    <div className="tech-stack-visual">
-                       <div className="stack-layer label-left">REFINE THE QUERY</div>
-                       <div className="stack-layer label-right highlight text-orange">RETRIEVE RELEVANT CONTENT</div>
-                       <div className="stack-layer label-left">RERANK FOR PRECISION</div>
-                       <div className="stack-layer label-right">GENERATE A RESPONSE</div>
-                       <div className="stack-layer label-left">VALIDATE ACCURACY</div>
-                       <div className="stack-layer label-right">ENGINE OPTIMIZATION</div>
-                       
-                       <div className="core-graphics">
-                          <div className="core-shape shape-1"></div>
-                          <div className="core-shape shape-2 orange"></div>
-                          <div className="core-shape shape-3"></div>
-                          <div className="core-shape shape-4"></div>
-                          <div className="core-shape shape-5"></div>
-                          <div className="core-shape shape-6"></div>
-                       </div>
+                    <div className="engine-outer-bracket">
+                      <div className="tech-stack-visual">
+                         <div className="engine-grid-bg"></div>
+                         <img src={`/ai-engine-${activeEngineStep + 1}.svg`} alt="" className="engine-svg" />
+                         {[
+                           { label: 'REFINE THE QUERY', side: 'left', top: '2%', height: '14%' },
+                           { label: 'RETRIEVE RELEVANT CONTENT', side: 'right', top: '17%', height: '17%' },
+                           { label: 'RERANK FOR PRECISION', side: 'left', top: '35%', height: '14%' },
+                           { label: 'GENERATE A RESPONSE', side: 'right', top: '50%', height: '17%' },
+                           { label: 'VALIDATE ACCURACY', side: 'left', top: '68%', height: '14%' },
+                           { label: 'ENGINE OPTIMIZATION', side: 'right', top: '83%', height: '15%' },
+                         ].map((layer, i) => (
+                           <div key={i} className={`layer-bracket label-${layer.side}${activeEngineStep === i ? ' active' : ''}`} style={{ top: layer.top, height: layer.height }}>
+                             <span className="layer-label">{layer.label}</span>
+                           </div>
+                         ))}
+                      </div>
                     </div>
                  </div>
 
                  <div className="diagram-col text-left">
-                    <div className="diagram-item mt-12">
-                       <span className="mono-label orange">[4.A.2] RETRIEVE RELEVANT CONTENT</span>
+                    <div className={`diagram-item mt-12${activeEngineStep === 1 ? ' active' : ''}`}>
+                       <span className="mono-label">[4.A.2] RETRIEVE RELEVANT CONTENT</span>
                        <p>The retrieval process, powered by our proprietary fin-cx-retrieval model, searches across all knowledge sources and selects the most relevant information for accurate answers.</p>
                        <div className="powered-by"><IconLogo width="12" height="12"/> POWERED BY FIN-CX</div>
                     </div>
-                    <div className="diagram-item mt-16">
+                    <div className={`diagram-item mt-16${activeEngineStep === 3 ? ' active' : ''}`}>
                        <span className="mono-label">[4.A.4] GENERATE A RESPONSE</span>
                        <p>Using a bespoke generative process, it creates answers with the highest resolution potential. Custom Guidance controls tone and behavior, ensuring responses align with your brand.</p>
                     </div>
-                    <div className="diagram-item mt-16">
+                    <div className={`diagram-item mt-16${activeEngineStep === 5 ? ' active' : ''}`}>
                        <span className="mono-label">[4.A.6] ENGINE OPTIMIZATION</span>
                        <p>To calibrate performance, the Fin AI Engine™ uses integrated tools that optimize answer generation, efficiency, precision, and coverage.</p>
                     </div>

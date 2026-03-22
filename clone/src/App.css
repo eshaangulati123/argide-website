@@ -1532,37 +1532,118 @@ cite {
   display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-orange); margin-top: 16px;
 }
 
+.engine-outer-bracket {
+  position: relative;
+  padding: 24px 60px;
+}
+
+/* [ bracket on left */
+.engine-outer-bracket::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 12px;
+  border-left: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ] bracket on right */
+.engine-outer-bracket::after {
+  content: ''; position: absolute; top: 0; bottom: 0; right: 0; width: 12px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
 .tech-stack-visual {
-  height: 600px; position: relative; border-left: 1px dashed rgba(255,255,255,0.2); border-right: 1px dashed rgba(255,255,255,0.2);
-  margin: 0 auto; width: 100%; max-width: 300px;
-  display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;
+  position: relative;
+  margin: 0 auto; width: 100%; max-width: 160px;
 }
 
-.stack-layer {
-  font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.4);
-  position: absolute; transform: translateY(-50%); letter-spacing: 0.1em; white-space: nowrap;
+.engine-grid-bg {
+  position: absolute; inset: -24px -60px;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
 }
 
-.label-left { left: 0; transform: translate(-120%, -50%) rotate(-90deg); transform-origin: right center; }
-.label-right { right: 0; transform: translate(120%, -50%) rotate(90deg); transform-origin: left center; }
+.engine-svg {
+  position: relative; width: 100%; height: auto; display: block;
+}
+
+/* Layer bracket: a small [ or ] next to each label */
+.layer-bracket {
+  position: absolute;
+  display: flex; align-items: center;
+}
+
+.layer-bracket.label-left {
+  left: -48px; right: auto; width: 36px;
+  padding-left: 8px;
+}
+
+.layer-bracket.label-right {
+  right: -48px; left: auto; width: 36px;
+  padding-right: 8px; justify-content: flex-end;
+}
+
+/* Bracket tick lines via pseudo-elements */
+.layer-bracket::before,
+.layer-bracket::after {
+  content: ''; position: absolute; width: 6px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.6s ease;
+}
+.layer-bracket::before { top: 0; }
+.layer-bracket::after { bottom: 0; }
+
+.layer-bracket.label-left::before,
+.layer-bracket.label-left::after { left: 0; }
+.layer-bracket.label-right::before,
+.layer-bracket.label-right::after { right: 0; }
+
+/* Vertical bar of the bracket */
+.layer-bracket.label-left { border-left: 1px solid rgba(255,255,255,0.25); }
+.layer-bracket.label-right { border-right: 1px solid rgba(255,255,255,0.25); }
+
+/* Active state */
+.layer-bracket.active { border-color: var(--accent-orange); }
+.layer-bracket.active::before,
+.layer-bracket.active::after { border-color: var(--accent-orange); }
+
+.layer-label {
+  font-family: var(--font-mono); font-size: 0.55rem; color: #fff;
+  letter-spacing: 0.1em; white-space: nowrap; writing-mode: vertical-lr;
+  transition: color 0.6s ease;
+}
+
+.layer-bracket.label-left .layer-label {
+  transform: rotate(180deg);
+}
+
+.layer-bracket.active .layer-label {
+  color: var(--accent-orange);
+}
+
 .text-orange { color: var(--accent-orange); }
 
-.core-graphics {
-  display: flex; flex-direction: column; gap: 24px; align-items: center; width: 100%;
+/* Diagram items: dim by default, highlight when active */
+.diagram-item {
+  transition: opacity 0.6s ease;
+  opacity: 0.4;
 }
 
-.core-shape {
-  width: 120px; height: 60px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
-  position: relative;
+.diagram-item.active {
+  opacity: 1;
 }
 
-.core-shape::after {
-  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 80px; height: 40px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 50%;
+.diagram-item.active .mono-label {
+  color: var(--accent-orange);
 }
 
-.core-shape.orange { border-color: var(--accent-orange); }
-.core-shape.orange::after { border-color: var(--accent-orange); }
+.diagram-item.active p {
+  color: rgba(255,255,255,0.9);
+}
 
 .trust-badges-row .badges-flex {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center;
