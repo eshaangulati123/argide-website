@@ -78,15 +78,14 @@ function App() {
     { id: 'performance', num: '02', label: 'PERFORMANCE' },
     { id: 'integrations', num: '03', label: 'INTEGRATIONS' },
     { id: 'technology', num: '04', label: 'TECHNOLOGY' },
-    { id: 'team', num: '05', label: 'AI TEAM' },
-    { id: 'pricing', num: '06', label: 'PRICING' },
+    { id: 'pricing', num: '05', label: 'PRICING' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      const sections = ['capabilities', 'performance', 'integrations', 'technology', 'team', 'pricing'];
+      const sections = ['capabilities', 'performance', 'integrations', 'technology', 'pricing'];
       let found = false;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -677,88 +676,8 @@ function App() {
               </div>
               </div>
               
-              <div className="trust-badges-row mt-16">
-                 <div className="mono-label text-center mb-8">TRUSTED AND FULLY CERTIFIED</div>
-                 <div className="badges-flex">
-                    <div className="badge-circle">ISO<br/>27018</div>
-                    <div className="badge-circle">ISO<br/>27701</div>
-                    <div className="badge-rect">GDPR<br/>COMPLIANT</div>
-                    <div className="badge-rect">CCPA<br/>COMPLIANT</div>
-                    <div className="badge-circle">ISO<br/>27001</div>
-                    <div className="badge-circle">ISO<br/>27018</div>
-                    <div className="badge-circle">ISO<br/>27701</div>
-                 </div>
-              </div>
             </section>
 
-            <section id="team" className="card-section dark-card mt-6 has-borders">
-              <CardBrackets />
-              <SectionLabel text="AI TEAM" withDivider />
-              
-              <div className="content-grid two-col mb-16">
-                <div>
-                   <h2 className="section-title">Built by a world-<br/>class team of AI<br/>experts</h2>
-                </div>
-                <div className="text-block pt-4">
-                  <p className="with-number"><span className="mono-label">05</span> The AI Group, an expert team of over 40 machine learning scientists, engineers and designers, continuously optimize Fin's performance through cutting-edge research, experimentation, and innovation—and publish their insights in the <a href="#" className="link-underline-white">AI research blog</a>.</p>
-                </div>
-              </div>
-
-              <div className="mono-label mb-12">AI GROUP LEADERSHIP</div>
-              
-              <div className="team-grid">
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Pratik Bothra</h4>
-                    <p>Principal Machine<br/>Learning Engineer</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Rob Clancy</h4>
-                    <p>Staff Product<br/>Engineer</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Mario Kostelac</h4>
-                    <p>Principal Machine<br/>Learning Engineer</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Molly Mahar</h4>
-                    <p>Principal AI Designer</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Brian McDonnell</h4>
-                    <p>Director, Engineering</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Fedor Parfenov</h4>
-                    <p>Staff Machine<br/>Learning Scientist</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Fergal Reid</h4>
-                    <p>Chief AI Officer</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Pedro Tabacof</h4>
-                    <p>Principal Machine<br/>Learning Scientist</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Alexey Tarasov</h4>
-                    <p>Senior Manager, ML<br/>Engineering</p>
-                 </div>
-                 <div className="team-member">
-                    <div className="avatar"></div>
-                    <h4>Rati Zvirawa</h4>
-                    <p>Director, Product<br/>Management</p>
-                 </div>
-              </div>
-            </section>
 
             <section className="pricing-header mt-16 mb-12 text-center">
                <ul className="hero-badges justify-center">

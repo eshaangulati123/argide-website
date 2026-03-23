@@ -1521,7 +1521,7 @@ cite {
 }
 
 @media (min-width: 1024px) {
-  .diagram-container { grid-template-columns: 1fr 2fr 1fr; }
+  .diagram-container { grid-template-columns: 1.3fr 1.6fr 1.3fr; gap: 24px; }
 }
 
 .diagram-item p {
@@ -1534,8 +1534,8 @@ cite {
 
 .engine-outer-bracket {
   position: relative;
-  padding: 24px 60px;
-  max-width: 280px;
+  padding: 24px 80px;
+  max-width: 320px;
   margin: 0 auto;
 }
 
@@ -1557,11 +1557,11 @@ cite {
 
 .tech-stack-visual {
   position: relative;
-  margin: 0 auto; width: 100%; max-width: 160px;
+  margin: 0 auto; width: 100%; max-width: 200px;
 }
 
 .engine-grid-bg {
-  position: absolute; inset: -24px -60px;
+  position: absolute; top: 17%; bottom: 17%; left: -80px; right: -80px;
   background-image:
     linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
@@ -1634,7 +1634,18 @@ cite {
 .diagram-box {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 24px;
+  padding: 24px 56px;
+}
+
+@media (min-width: 1024px) {
+  .diagram-container > .diagram-col:first-child {
+    padding-left: 20px;
+    padding-top: 90px;
+  }
+  .diagram-container > .diagram-col:nth-child(3) {
+    padding-right: 20px;
+    padding-top: 150px;
+  }
 }
 
 .dark-card .dashed-taper {
@@ -1761,6 +1772,7 @@ cite {
 
 .diagram-item-header .mono-label {
   display: inline;
+  font-size: 0.6875rem;
 }
 
 .diagram-item.active {
@@ -1772,7 +1784,7 @@ cite {
 }
 
 .diagram-item.active .mono-label {
-  color: var(--accent-orange);
+  color: #fff;
 }
 
 .diagram-item.active p {
