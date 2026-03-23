@@ -213,7 +213,7 @@ function App() {
           </div>
         </section>
 
-        <section className="logo-wall-section relative z-10">
+        {/* <section className="logo-wall-section relative z-10">
           <div className="logo-grid">
             <div className="logo-item">MERCURY</div>
             <div className="logo-item">miro</div>
@@ -228,7 +228,7 @@ function App() {
             <div className="logo-item">WHOOP</div>
             <div className="logo-item">xero</div>
           </div>
-        </section>
+        </section> */}
 
         <nav className="mobile-section-nav">
           <div className="mobile-nav-scroll" ref={mobileNavRef}>
@@ -679,55 +679,53 @@ function App() {
             </section>
 
 
-            <section className="pricing-header mt-16 mb-12 text-center">
-               <ul className="hero-badges justify-center">
-                 <li>#1 AI AGENT ON G2</li>
-                 <li>✓ FIN MILLION DOLLAR GUARANTEE ⓘ</li>
-               </ul>
+            <div id="pricing">
+            <section className="pricing-header mt-16 mb-12">
+               <h2 className="pricing-heading">Get the #1 AI Agent for<br/><span>all</span> your customer service</h2>
             </section>
 
-            <section id="pricing" className="pricing-cards-section">
+            <section className="pricing-cards-section">
                <div className="pricing-grid">
-                  <div className="pricing-card card-section dark-card has-borders">
-                     <CardBrackets />
-                     <h3 className="card-title">Fin with your<br/>current helpdesk</h3>
+                  <div className="pricing-card card-section pricing-transparent-card">
+                     <span className="dashed-taper top-left"></span>
+                     <span className="dashed-taper top-right"></span>
+                     <span className="dashed-taper bottom-left"></span>
+                     <span className="dashed-taper bottom-right"></span>
+                     <h3 className="card-title">Free</h3>
                      <p className="card-desc">Fin AI Agent works seamlessly with any helpdesk, including Zendesk, Salesforce, HubSpot, and more.</p>
-                     
-                     <div className="price-block">
-                        <span className="price">$0.99</span>
-                        <span className="price-unit">PER OUTCOME ⓘ<br/>50 OUTCOMES PER MONTH<br/>MINIMUM</span>
-                     </div>
-
+                     <ul className="pricing-features">
+                        <li>Unlimited responses</li>
+                        <li>Forward Deployed Engineer</li>
+                        <li>Custom platform integrations</li>
+                        <li>SOC2, GDPR, ISO 27001</li>
+                        <li>SSO/SAML & dedicated infrastructure</li>
+                     </ul>
                      <div className="card-actions">
-                        <button className="btn-primary large" style={{borderRadius: '8px'}}>Free 14 day trial</button>
-                        <a href="#" className="link-underline-white">Get a demo</a>
+                        <a href="#" className="btn-primary large">Contact sales</a>
                      </div>
                   </div>
 
-                  <div className="pricing-card card-section dark-card has-borders">
-                     <CardBrackets />
-                     <h3 className="card-title">Fin with<br/>Intercom's Helpdesk</h3>
+                  <div className="pricing-card card-section pricing-transparent-card">
+                     <span className="dashed-taper top-left"></span>
+                     <span className="dashed-taper top-right"></span>
+                     <span className="dashed-taper bottom-left"></span>
+                     <span className="dashed-taper bottom-right"></span>
+                     <h3 className="card-title">Enterprise</h3>
                      <p className="card-desc">Combine Fin AI Agent with Intercom's Helpdesk to get the full Intercom Customer Service Suite.</p>
-                     
-                     <div className="price-block multi">
-                        <div className="price-row">
-                           <span className="price">$0.99</span>
-                           <span className="price-unit">PER<br/>OUTCOME ⓘ</span>
-                        </div>
-                        <div className="plus">+</div>
-                        <div className="price-row">
-                           <span className="price">$29</span>
-                           <span className="price-unit">PER HELPDESK SEAT<br/>PER MONTH <a href="#" className="link-underline-white">(SEE ALL PLANS)</a></span>
-                        </div>
-                     </div>
-
-                     <div className="card-actions mt-auto">
-                        <button className="btn-outline light large" style={{borderRadius: '8px'}}>Free 14 day trial</button>
-                        <a href="#" className="link-underline-white">Get a demo</a>
+                     <ul className="pricing-features">
+                        <li>Unlimited responses</li>
+                        <li>Forward Deployed Engineer</li>
+                        <li>Custom platform integrations</li>
+                        <li>SOC2, GDPR, ISO 27001</li>
+                        <li>SSO/SAML & dedicated infrastructure</li>
+                     </ul>
+                     <div className="card-actions">
+                        <a href="#" className="btn-primary large">Contact sales</a>
                      </div>
                   </div>
                </div>
             </section>
+            </div>
 
           </div>
         </div>
@@ -735,9 +733,9 @@ function App() {
         <section className="bottom-cta-section relative z-10">
           <div className="flare-bg"></div>
           <div className="cta-content relative z-10">
-            <h2 className="cta-title text-center">
-              <span className="italic-text">with the</span>
-              #1 AI Agent today
+            <h2 className="cta-title">
+              <span className="italic-text">Get started with the</span>
+              <strong>#1 AI Agent today</strong>
             </h2>
             <div className="hero-cta mt-8 relative z-10">
               <a href="#" className="btn-primary large">Start free trial</a>
@@ -746,8 +744,7 @@ function App() {
           </div>
         </section>
 
-        <section className="customer-agent-section card-section dark-card has-borders max-w relative z-10">
-           <CardBrackets />
+        <section className="customer-agent-section relative z-10">
            <SectionLabel text="CUSTOMER AGENT" />
            <div className="content-grid two-col items-center">
               <h2 className="section-title" style={{marginBottom: 0}}>
