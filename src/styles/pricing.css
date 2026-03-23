@@ -1,0 +1,44 @@
+.pricing-heading {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.pricing-heading span { font-style: italic; }
+@media (min-width: 768px) { .pricing-heading { font-size: 4rem; } }
+@media (min-width: 1280px) { .pricing-heading { font-size: 5.5rem; letter-spacing: -0.03em; } }
+
+#pricing { scroll-margin-top: 100px; min-height: 100vh; padding-bottom: 120px; }
+
+.pricing-cards-section { margin-bottom: 80px; }
+.pricing-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 1024px) { .pricing-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+
+.pricing-card { display: flex; flex-direction: column; }
+.pricing-card.card-section { padding: 24px; }
+@media (min-width: 1024px) { .pricing-card.card-section { padding: 36px; } }
+
+.pricing-transparent-card {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.pricing-transparent-card .bracket { border-color: rgba(255, 255, 255, 0.3); }
+.pricing-transparent-card .dashed-taper { border-left-color: rgba(255, 255, 255, 0.3); }
+
+.card-title { font-size: 2rem; font-weight: 400; margin-bottom: 16px; font-family: var(--font-sans); }
+.card-desc { color: var(--text-secondary); margin-bottom: 24px; }
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pricing-features li { font-size: 0.875rem; color: var(--text-secondary); padding-left: 16px; position: relative; }
+.pricing-features li::before { content: '—'; position: absolute; left: 0; color: rgba(255, 255, 255, 0.25); font-size: 0.75rem; }
+
+.card-actions { display: flex; align-items: center; gap: 24px; margin-top: auto; }

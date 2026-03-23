@@ -1,0 +1,109 @@
+.hero-section {
+  position: relative;
+  padding: 180px 24px 100px;
+  text-align: center;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #020917;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.hero-fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(to top, #020917 0%, rgba(2, 9, 23, 0.85) 25%, transparent 100%);
+  z-index: 1;
+}
+.hero-fade-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(to right, #020917 0%, transparent 100%);
+  z-index: 1;
+}
+.hero-fade-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(to left, #020917 0%, transparent 100%);
+  z-index: 1;
+}
+
+.hero-content { position: relative; max-width: 1400px; margin: 0 auto; }
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.hero-title span { font-style: italic; }
+@media (min-width: 768px) { .hero-title { font-size: 4rem; } }
+@media (min-width: 1280px) { .hero-title { font-size: 5.5rem; letter-spacing: -0.03em; } }
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 36px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+}
+.hero-badges li { display: flex; align-items: center; margin: 8px 0; }
+.hero-badges li:not(:last-child)::after { content: '•'; opacity: 0.3; margin: 0 24px; }
+
+.hero-cta { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+.hero-chat-input-section {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 80px;
+  margin-top: -40px;
+}
+.hero-chat-bubble {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  padding: 14px 14px 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 340px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+.hero-chat-placeholder { color: rgba(0, 0, 0, 0.4); font-size: 0.95rem; flex: 1; white-space: nowrap; }
+.hero-chat-send-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

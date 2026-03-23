@@ -1,158 +1,269 @@
-# Copy Changes — Fin → ARGIDE
+# Copy Changes — Fin → Argide
 
-All changes required in `clone/src/App.jsx` (and noted exceptions) to replace Fin/Fin AI branding with ARGIDE/ARGIDE AI, and to rewrite product descriptions to reflect ARGIDE's actual product.
+All changes required in `src/App.jsx` (and noted exceptions) to replace Fin/Fin AI branding with Argide/Argide AI, and to rewrite product descriptions to reflect Argide's actual product.
 
-**ARGIDE in one sentence:** Argide lets users control your app through chat. Connect ARGIDE's AI agent to your product, and users can type what they want instead of clicking through menus. ARGIDE connects to your APIs and data sources, navigates your UI with browser-use agents, and executes real actions when users need help.
+**Argide in one sentence:** Argide lets users control your app through chat. Connect Argide's AI agent to your product, and users can type what they want instead of clicking through menus. Argide connects to your APIs and data sources, navigates your UI with browser-use agents, and executes real actions when users need help.
 
 ---
 
 ## Change Key
 
-- `SWAP` — Simple name replacement (Fin → ARGIDE / Fin AI → ARGIDE AI)
-- `REWRITE` — Full copy rewrite to reflect ARGIDE's product
-- `KEEP` — Left unchanged for now (no direct ARGIDE equivalent yet)
+- `SWAP` — Simple name replacement (Fin → Argide / Fin AI → Argide AI)
+- `REWRITE` — Full copy rewrite to reflect Argide's product
+- `KEEP` — Left unchanged for now (no direct Argide equivalent yet)
 
 ---
 
 ## Hero Section
 
-**File:** `clone/src/App.jsx` · Line 199
+**File:** `src/App.jsx`
 
-| Type | Field | Current | New |
-|------|-------|---------|-----|
-| SWAP | Chat placeholder | `Can Fin integrate with my help d...` | `Can ARGIDE control my app through chat?` |
+### Title (Line 164)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `The #1 AI Agent for<br />all your customer service` | `The AI Agent that lets users<br />control your app` |
+
+### Badges (Lines 166–169)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `#1 IN BAKE-OFFS` | `0 TURNAROUND TIME` |
+| REWRITE | `#1 IN BENCHMARKS` | `BROWSER-USE AGENTS` |
+| REWRITE | `#1 FOR COMPLEX QUERIES` | `API + UI EXECUTION` | #let this be as is 
+| REWRITE | `#1 ON G2` | `WORKS WITH ANY APP` |
+
+### Chat placeholder (Line 180)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Can Fin integrate with my help d...` | `Can Argide navigate my app and...` |
 
 ---
 
 ## Section 01 — Capabilities
 
-**File:** `clone/src/App.jsx` · Lines 267–298
+**File:** `src/App.jsx` · Lines 267–298
 
 ### Heading (Line 267)
 
 | Type | Current | New |
 |------|---------|-----|
-| REWRITE | `Fin resolves the most complex queries on every channel` | `ARGIDE lets users control your app through chat` |
+| REWRITE | `Fin resolves the most complex queries on every channel` | `Argide lets users control your app through chat` |
 
 ### Body Paragraph (Line 272)
 
 | Type | Current | New |
 |------|---------|-----|
-| REWRITE | `Fin handles even the most complex queries through a continuous improvement loop called the Fin Flywheel. Train Fin on your Procedures, knowledge, and policies, test performance before launch, deploy across every channel, then analyze and improve with AI-powered Insights—so every query is resolved accurately and consistently.` | `ARGIDE connects to your product so users can type what they want instead of clicking through menus. Connect ARGIDE to your APIs and data sources, navigate your UI with browser-use agents, and execute real actions—so users get things done faster, every time.` |
+| REWRITE | `Fin handles even the most complex queries through a continuous improvement loop called the Fin Flywheel. Train Fin on your Procedures, knowledge, and policies, test performance before launch, deploy across every channel, then analyze and improve with AI-powered Insights—so every query is resolved accurately and consistently.` | `Argide connects to your product so users can type what they want instead of clicking through menus. Connect Argide to your APIs and data sources, navigate your UI with browser-use agents, and execute real actions—so users get things done faster, every time.` |
 
 ### Feature Cards (Lines 283, 288, 293, 298)
 
 | Card | Type | Current Title | New Title | Current Copy | New Copy |
 |------|------|---------------|-----------|--------------|----------|
-| 1. Train | REWRITE | `Train` | `Connect` | `Train Fin to resolve even the most complex queries with your Procedures, knowledge and policies.` | `Connect ARGIDE to your APIs, data sources, and product UI with a simple integration.` |
+| 1. Train | REWRITE | `Train` | `Connect` | `Train Fin to resolve even the most complex queries with your Procedures, knowledge and policies.` | `Connect Argide to your APIs, data sources, and product UI with a simple integration.` |
 | 2. Test | REWRITE | `Test` | `Chat` | `Run fully simulated customer conversations from start to finish to see exactly how Fin will behave before going live.` | `Users type what they want in natural language instead of navigating menus or learning your interface.` |
-| 3. Deploy | REWRITE | `Deploy` | `Act` | `Set Fin live across every channel—voice, email, chat, and social—for consistent support wherever customers reach out.` | `ARGIDE executes real actions across your product—browsing your UI, calling your APIs, and completing tasks on behalf of users.` |
-| 4. Analyze | REWRITE | `Analyze` | `Automate` | `Use AI-powered Insights to analyze and improve Fin's performance and deliver better customer experiences.` | `ARGIDE handles complex multi-step workflows autonomously, giving users superpowers inside your product.` |
+| 3. Deploy | REWRITE | `Deploy` | `Act` | `Set Fin live across every channel—voice, email, chat, and social—for consistent support wherever customers reach out.` | `Argide executes real actions across your product—browsing your UI, calling your APIs, and completing tasks on behalf of users.` |
+| 4. Analyze | REWRITE | `Analyze` | `Automate` | `Use AI-powered Insights to analyze and improve Fin's performance and deliver better customer experiences.` | `Argide handles complex multi-step workflows autonomously, giving users superpowers inside your product.` |
 
 ---
 
 ## Section 02 — Performance
 
-**File:** `clone/src/App.jsx` · Lines 308–464
+**File:** `src/App.jsx` · Lines 285–465
 
-> These sections compare Fin to competitors on customer service resolution rates and include third-party testimonials. They are left as **KEEP** for now pending ARGIDE-specific metrics and quotes. Only name swaps applied below.
+> Reframed from "resolution rate" (customer service metric) to "turnaround time" and "action completion" (Argide's core value prop: 0 TAT because the agent navigates and acts for users).
 
-### Name Swaps
+### Section Heading (Line 288–289)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Fin outperforms every competitor. Every time.` | `Zero turnaround time. Every time.` |
+
+### Line Chart (Line 292)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `FIG 2.A - FIN'S AVERAGE RESOLUTION RATE INCREASES 1% EVERY MONTH` | `FIG 2.A - ARGIDE REDUCES TURNAROUND TIME TO NEAR-ZERO` |
+
+### Bar Chart (Lines 352, 403, 405)
 
 | Line | Type | Current | New |
 |------|------|---------|-----|
-| 308 | SWAP | `Fin outperforms every competitor.` | `ARGIDE outperforms every competitor.` |
-| 311 | SWAP | `FIG 2.A - FIN'S AVERAGE RESOLUTION RATE INCREASES 1% EVERY MONTH` | `FIG 2.A - ARGIDE'S AVERAGE RESOLUTION RATE INCREASES 1% EVERY MONTH` |
-| 371 | SWAP | `FIG 2.B - FIN WINS EVERY HEAD-TO-HEAD TEST ON RESOLUTION RATE` | `FIG 2.B - ARGIDE WINS EVERY HEAD-TO-HEAD TEST ON RESOLUTION RATE` |
-| 422 | SWAP | Chart bar label: `FIN` | `ARGIDE` |
-| 424 | SWAP | `Resolution rate based on independent testing conducted by Fin customers.` | `Resolution rate based on independent testing conducted by ARGIDE customers.` |
-| 439 | SWAP | `"Fin is in a completely different league...` | `"ARGIDE is in a completely different league...` |
-| 451 | SWAP | `buy – and specifically, buy Fin."` | `buy – and specifically, buy ARGIDE."` |
-| 464 | SWAP | `Build vs. buy: Why Anthropic chose Fin` | `Build vs. buy: Why Anthropic chose ARGIDE` |
+| 352 | REWRITE | `FIG 2.B - FIN WINS EVERY HEAD-TO-HEAD TEST ON RESOLUTION RATE` | `FIG 2.B - ARGIDE VS. MANUAL TASK COMPLETION TIME` |
+| 403 | SWAP | Chart bar label: `FIN` | `ARGIDE` |
+| 405 | REWRITE | `Resolution rate based on independent testing conducted by Fin customers.` | `Average task completion time based on testing with Argide customers.` |
+
+### Testimonial (Lines 420–422)
+
+| Line | Type | Current | New |
+|------|------|---------|-----|
+| 420 | REWRITE | `"Fin is in a completely different league. It's now involved in 99% of conversations and successfully resolves up to 65% end-to-end – even the more complex ones."` | `"Argide is in a completely different league. Users complete tasks in seconds instead of minutes—it navigates our app and executes actions instantly, even the complex multi-step ones."` |
+| 422 | REWRITE | `Angelo Livanos, Vice President of Global Support at Lightspeed` | `[Placeholder — Argide customer quote needed]` |
+
+### Video Section (Lines 431–445)
+
+| Line | Type | Current | New |
+|------|------|---------|-----|
+| 431 | REWRITE | `ANTHROP\C` | `ARGIDE` |
+| 432 | REWRITE | `"If you're debating whether to build your own AI solution or buy one, my advice would be to buy – and specifically, buy Fin."` | `"We tried building in-app AI ourselves. Argide gave us browser-use agents and API execution out of the box—zero turnaround time for our users."` |
+| 445 | REWRITE | `Build vs. buy: Why Anthropic chose Fin` | `Build vs. buy: Why teams choose Argide` |
 
 ---
 
 ## Section 03 — Integrations
 
-**File:** `clone/src/App.jsx` · Lines 492–534
+**File:** `src/App.jsx` · Lines 467–538
 
-> This section is about helpdesk integrations (Zendesk, Salesforce, etc.) which are Fin-specific. Left as **KEEP** for now. Name swaps applied below.
+> Reframed from helpdesk integrations to product/platform integrations. Argide connects to any app via APIs, browser-use agents, and data sources—not helpdesks.
 
-### Name Swaps
+### Section Label (Line 469)
 
-| Line | Type | Current | New |
-|------|------|---------|-----|
-| 492 | SWAP | `Fin works with any helpdesk` | `ARGIDE works with any helpdesk` |
-| 493 | SWAP | `Set up Fin with your existing helpdesk...` | `Set up ARGIDE with your existing helpdesk...` |
-| 511 | SWAP | `Fin for Zendesk` | `ARGIDE for Zendesk` |
-| 512 | SWAP | `Fin for Salesforce` | `ARGIDE for Salesforce` |
+| Type | Current | New |
+|------|---------|-----|
+| KEEP | `SEAMLESS INTEGRATION` | `SEAMLESS INTEGRATION` |
+
+### Heading (Line 473)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Fin works with any helpdesk` | `Argide works with any product` |
+
+### Body Paragraph (Line 474)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Set up Fin with your existing helpdesk or as part of the Intercom Customer Service Suite—with support for additional platforms and custom channels.` | `Connect Argide to your product in under an hour. It plugs into your APIs, navigates your UI with browser-use agents, and connects to your data sources—no custom build required.` |
+
+### Key Features List (Lines 484–487)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Set up in under an hour.` | `Set up in under an hour.` |
+| REWRITE | `Integrates into your current support channels—tickets, email, live chat, and more.` | `Connects to your APIs, databases, and third-party services.` |
+| REWRITE | `Follows your existing assignment rules, automations, and reporting.` | `Navigates your UI with browser-use agents to execute real actions.` |
+| REWRITE | `Escalates to agents in your preferred inbox.` | `Falls back to human support when needed.` |
+
+### Link Tabs (Lines 491–493)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Intercom Suite` / `Fin for Zendesk` / `Fin for Salesforce` | `API Connections` / `Browser-Use Agents` / `Data Sources` |
 
 ---
 
 ## Section 04 — Superior Technology (AI Engine)
 
-**File:** `clone/src/App.jsx` · Lines 565–623
+**File:** `src/App.jsx` · Lines 540–651
 
-### Heading (Line 565)
+> Reframed from customer service query resolution to Argide's actual architecture: understanding user intent, retrieving context from APIs/data, planning actions, executing via browser-use agents, and validating results.
 
-| Type | Current | New |
-|------|---------|-----|
-| SWAP | `Powered by the Fin AI Engine™` | `Powered by the ARGIDE AI Engine™` |
-
-### Body Paragraph (Line 568)
+### Heading (Line 546)
 
 | Type | Current | New |
 |------|---------|-----|
-| REWRITE | `The Fin AI Engine™ is a patented AI architecture specifically engineered for complex customer service queries. Every layer is optimized for accuracy, speed, and reliability—so Fin can resolve more conversations, more effectively than competing AI Agents.` | `The ARGIDE AI Engine™ is an AI architecture specifically engineered for complex product interactions. Every layer is optimized for accuracy, speed, and reliability—so ARGIDE can execute more actions, more effectively than any competing AI agent.` |
+| REWRITE | `Powered by the Fin AI Engine™` | `Powered by the Argide AI Engine™` |
 
-### Engine Step Descriptions
+### Body Paragraph (Line 549)
 
-| Line | Type | Current | New |
-|------|------|---------|-----|
-| 581 | SWAP | `our proprietary fin-cx-reranker model` | `our proprietary argide-cx-reranker model` |
-| 582 | SWAP | `POWERED BY FIN-CX` | `POWERED BY ARGIDE-CX` |
-| 586 | SWAP | `the Fin AI Engine™ checks whether the LLM output meets response accuracy and safety standards.` | `the ARGIDE AI Engine™ checks whether the LLM output meets response accuracy and safety standards.` |
-| 614 | SWAP | `our proprietary fin-cx-retrieval model` | `our proprietary argide-cx-retrieval model` |
-| 615 | SWAP | `POWERED BY FIN-CX` | `POWERED BY ARGIDE-CX` |
-| 623 | SWAP | `the Fin AI Engine™ uses integrated tools that optimize answer generation, efficiency, precision, and coverage.` | `the ARGIDE AI Engine™ uses integrated tools that optimize answer generation, efficiency, precision, and coverage.` |
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `The Fin AI Engine™ is a patented AI architecture specifically engineered for complex customer service queries. Every layer is optimized for accuracy, speed, and reliability—so Fin can resolve more conversations, more effectively than competing AI Agents.` | `The Argide AI Engine™ is an AI architecture engineered for in-app action execution. Every layer is optimized for understanding user intent, navigating your product, and completing tasks—so users get zero turnaround time on every request.` |
+
+### Figure Label (Line 554)
+
+| Type | Current | New |
+|------|---------|-----|
+| SWAP | `FIG 4.A - FIN AI ENGINE™` | `FIG 4.A - ARGIDE AI ENGINE™` |
+
+### Engine Steps (engineSteps array, Lines 48–55 + diagram items)
+
+| Step | Current Label | New Label | Current Desc | New Desc |
+|------|--------------|-----------|--------------|----------|
+| 4.A.1 | `REFINE THE QUERY` | `UNDERSTAND USER INTENT` | `In order to optimize the accuracy of an answer...` | `Argide parses the user's natural language request and maps it to available actions, pages, and data within your product.` |
+| 4.A.2 | `RETRIEVE RELEVANT CONTENT` | `RETRIEVE CONTEXT` | `The retrieval process, powered by our proprietary fin-cx-retrieval model...` | `The retrieval process, powered by our proprietary argide-cx-retrieval model, pulls relevant context from your APIs, data sources, and product state.` |
+| 4.A.3 | `RERANK FOR PRECISION` | `PLAN THE ACTION` | `The reranking process, powered by our proprietary fin-cx-reranker model...` | `The planning process, powered by our proprietary argide-cx-planner model, determines the optimal sequence of actions—API calls, page navigations, and UI interactions.` |
+| 4.A.4 | `GENERATE A RESPONSE` | `EXECUTE THE ACTION` | `Using a bespoke generative process, it creates answers...` | `Using browser-use agents and API connectors, Argide navigates your product UI and executes the planned actions on behalf of the user.` |
+| 4.A.5 | `VALIDATE ACCURACY` | `VALIDATE RESULTS` | `In the final step, the Fin AI Engine™ checks whether the LLM output meets response accuracy and safety standards.` | `In the final step, the Argide AI Engine™ verifies that the executed actions produced the correct outcome and meets safety standards.` |
+| 4.A.6 | `ENGINE OPTIMIZATION` | `ENGINE OPTIMIZATION` | `To calibrate performance, the Fin AI Engine™ uses integrated tools...` | `To calibrate performance, the Argide AI Engine™ uses integrated tools that optimize action execution, efficiency, precision, and coverage.` |
+
+### Powered-by Labels
+
+| Type | Current | New |
+|------|---------|-----|
+| SWAP | `POWERED BY FIN-CX` (×2) | `POWERED BY ARGIDE-CX` (×2) |
 
 ---
 
-## Section 05 — AI Team
+## Pricing Section
 
-**File:** `clone/src/App.jsx` · Line 651
+**File:** `src/App.jsx` · Lines 655–701
+
+### Pricing Heading (Line 657)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Get the #1 AI Agent for all your customer service` | `Get the AI Agent that lets users control your app` |
+
+### Pricing Card — Free (Lines 667–668)
 
 | Line | Type | Current | New |
 |------|------|---------|-----|
-| 651 | SWAP | `continuously optimize Fin's performance through cutting-edge research...` | `continuously optimize ARGIDE's performance through cutting-edge research...` |
+| 667 | KEEP | `Free` | `Free` |
+| 668 | REWRITE | `Fin AI Agent works seamlessly with any helpdesk, including Zendesk, Salesforce, HubSpot, and more.` | `Argide AI Agent connects to your APIs and product UI. Users chat, Argide acts—zero turnaround time.` |
+
+### Pricing Card — Enterprise (Lines 686–687)
+
+| Line | Type | Current | New |
+|------|------|---------|-----|
+| 686 | KEEP | `Enterprise` | `Enterprise` |
+| 687 | REWRITE | `Combine Fin AI Agent with Intercom's Helpdesk to get the full Intercom Customer Service Suite.` | `Argide AI Agent with dedicated infrastructure, custom integrations, and browser-use agents tuned to your product.` |
 
 ---
 
-## Pricing / CTA
+## Bottom CTA
 
-**File:** `clone/src/App.jsx` · Lines 714–739
+**File:** `src/App.jsx` · Lines 706–718
 
-| Line | Type | Current | New |
-|------|------|---------|-----|
-| 714 | SWAP | `✓ FIN MILLION DOLLAR GUARANTEE ⓘ` | `✓ ARGIDE MILLION DOLLAR GUARANTEE ⓘ` |
-| 722 | REWRITE | `Fin with your current helpdesk` | `ARGIDE with your product` |
-| 723 | REWRITE | `Fin AI Agent works seamlessly with any helpdesk, including Zendesk, Salesforce, HubSpot, and more.` | `ARGIDE AI Agent connects to your existing APIs, data sources, and product UI—no helpdesk required.` |
-| 738 | REWRITE | `Fin with Intercom's Helpdesk` | `ARGIDE with your platform` |
-| 739 | REWRITE | `Combine Fin AI Agent with Intercom's Helpdesk to get the full Intercom Customer Service Suite.` | `Combine ARGIDE AI Agent with your existing platform for a fully integrated AI-powered experience.` |
+### CTA Title (Lines 710–711)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Get started with the #1 AI Agent today` | `Give your users zero turnaround time` |
+
+---
+
+## Customer Agent Section
+
+**File:** `src/App.jsx` · Lines 720–728
+
+### Heading (Lines 723–724)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Our vision—one Agent for the entire customer experience` | `Our vision—one Agent for your entire product` |
+
+### Body (Line 726)
+
+| Type | Current | New |
+|------|---------|-----|
+| REWRITE | `Imagine a single Customer Agent across the whole customer journey. A future that opens the door to a previously-unimaginable level of customer experience.` | `Imagine a single AI agent that understands every corner of your product. A future where users never need to learn your UI—they just say what they want and Argide does it.` |
 
 ---
 
 ## Footer Navigation
 
-**File:** `clone/src/App.jsx` · Lines 797–852
+**File:** `src/App.jsx` · Lines 732–817
 
 | Line | Type | Current | New |
 |------|------|---------|-----|
-| 797 | SWAP | `Fin Overview` | `ARGIDE Overview` |
-| 807 | SWAP | `Fin for Zendesk` | `ARGIDE for Zendesk` |
-| 808 | SWAP | `Fin for Salesforce` | `ARGIDE for Salesforce` |
-| 838 | SWAP | `Fin 3` | `ARGIDE 3` |
-| 852 | SWAP | `FIN IN ACTION` | `ARGIDE IN ACTION` |
+| 738 | SWAP | `Fin Overview` | `Argide Overview` |
+| 747 | REWRITE | `Intercom Suite ↗` | `Documentation ↗` |
+| 748 | REWRITE | `Fin for Zendesk` | `API Connections` |
+| 749 | REWRITE | `Fin for Salesforce` | `Browser-Use Agents` |
+| 779 | SWAP | `Fin 3` | `Argide 3` |
+| 793 | SWAP | `FIN IN ACTION` | `ARGIDE IN ACTION` |
+| 809 | REWRITE | `An Intercom Product` | `Argide` |
 
 ---
 
@@ -162,12 +273,12 @@ These are JavaScript variable names and CSS class names, not user-visible copy. 
 
 | File | Identifier | Note |
 |------|-----------|------|
-| `clone/src/IntegrationLogos.jsx` line 43 | `export const LogoFin` | JS component name |
-| `clone/src/IntegrationLogos.jsx` line 44 | `.fin-cls` | SVG-internal CSS class |
-| `clone/src/App.css` line 1471 | `.int-fin-cell` | CSS class name |
-| `clone/src/App.css` line 1480 | `.int-fin-cell .int-fin-logo` | CSS class name |
-| `clone/src/App.jsx` line 3 | `import { LogoFin }` | JS import |
-| `clone/src/App.jsx` line 534 | `<LogoFin />` | JSX component reference |
+| `src/IntegrationLogos.jsx` line 43 | `export const LogoFin` | JS component name |
+| `src/IntegrationLogos.jsx` line 44 | `.fin-cls` | SVG-internal CSS class |
+| `src/App.css` line 1471 | `.int-fin-cell` | CSS class name |
+| `src/App.css` line 1480 | `.int-fin-cell .int-fin-logo` | CSS class name |
+| `src/App.jsx` line 3 | `import { LogoFin }` | JS import |
+| `src/App.jsx` line 534 | `<LogoFin />` | JSX component reference |
 
 ---
 
@@ -175,7 +286,7 @@ These are JavaScript variable names and CSS class names, not user-visible copy. 
 
 | Change Type | Count |
 |------------|-------|
-| SWAP (name only) | 27 |
-| REWRITE (new ARGIDE copy drafted) | 8 |
-| KEEP (no ARGIDE equivalent yet) | ~4 sections |
+| SWAP (name only) | ~12 |
+| REWRITE (new Argide copy drafted) | ~40 |
+| KEEP (unchanged) | ~3 items |
 | Out of scope (code identifiers) | 6 |

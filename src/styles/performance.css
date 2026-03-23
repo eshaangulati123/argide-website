@@ -1,0 +1,99 @@
+.chart-container {
+  position: relative;
+  margin: 0 0 40px;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+.chart-label + .chart-container { margin-top: 0; }
+
+.line-chart-area { position: relative; width: 100%; overflow: hidden; }
+.perf-chart-svg { width: 100%; height: auto; display: block; }
+
+.chart-axis-label { font-family: var(--font-mono); font-size: 11px; fill: rgba(0,0,0,0.6); letter-spacing: 0.06em; }
+.chart-bar-value { font-family: var(--font-mono); font-size: 11px; fill: rgba(0,0,0,0.6); letter-spacing: 0.05em; }
+.chart-bar-value.active { fill: rgba(0,0,0,0.8); }
+.chart-bar-label-active { font-family: var(--font-mono); font-size: 11px; fill: #000000; letter-spacing: 0.05em; font-weight: 500; }
+
+.bar-chart-svg { width: 100%; height: auto; display: block; }
+@media (min-width: 769px) { .bar-chart-svg { width: 80%; } }
+
+.performance-bottom-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 72px; }
+@media (min-width: 1024px) { .performance-bottom-grid { grid-template-columns: 2fr 1fr; } }
+
+.perf-box-wrapper { display: flex; flex-direction: column; }
+
+.chart-box { padding-right: 24px; }
+@media (min-width: 1024px) { .chart-box { padding-right: 24px; } .testimonial-box { padding-left: 24px; } }
+@media (max-width: 1023px) { .chart-box { padding-bottom: 24px; } }
+
+.bar-chart-area { position: relative; }
+.bar-chart-caption {
+  position: absolute;
+  top: 11%;
+  right: 0;
+  max-width: 160px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.5);
+}
+@media (max-width: 768px) { .bar-chart-caption { position: static; max-width: 100%; margin-top: 16px; } }
+
+.testimonial-box { padding-left: 0; }
+@media (min-width: 1024px) { .testimonial-box { padding-left: 20px; } }
+
+.avatar-placeholder { width: 60px; height: 60px; border-radius: 50%; background: #ddd; margin-bottom: 24px; }
+blockquote { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.4; color: var(--text-dark); margin-bottom: 24px; font-weight: 400; }
+mark { background-color: var(--accent-orange); color: white; padding: 2px 4px; }
+cite { font-size: 0.875rem; color: var(--text-dark-secondary); font-style: normal; }
+
+.video-player {
+  background-color: var(--bg-card-dark);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 80px 100px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+  min-height: 500px;
+}
+
+.video-content-top { width: 100%; text-align: left; }
+.video-content-top h2 { font-size: 1.75rem; letter-spacing: 0.1em; margin-bottom: 40px; color: white; font-family: var(--font-mono); font-weight: 500; }
+.video-content-top p { font-size: 3rem; color: white; max-width: 1100px; line-height: 1.2; font-family: var(--font-serif); font-weight: 400; margin-bottom: 0; }
+
+.play-btn {
+  margin-top: 80px;
+  align-self: center;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 16px 32px;
+  border-radius: 40px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  background: transparent;
+  text-transform: uppercase;
+}
+.play-btn:hover { background: white; color: black; }
+
+.video-playlist { background: #ffffff; border: 1px solid rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden; }
+.playlist-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.playlist-item { padding: 32px 24px; border-right: 1px solid rgba(0,0,0,0.15); display: flex; gap: 16px; align-items: center; cursor: pointer; }
+.playlist-item:last-child { border-right: none; }
+.playlist-item.active { background: rgba(0,0,0,0.03); }
+.gray-box { background-color: #e0e0e0; }
+.thumb { width: 96px; height: 60px; border-radius: 4px; flex-shrink: 0; }
+.playlist-item h4 { font-size: 1.125rem; font-weight: 500; margin-top: 4px; line-height: 1.4; }
+@media (max-width: 1024px) {
+  .playlist-grid { grid-template-columns: 1fr; }
+  .playlist-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.15); }
+}

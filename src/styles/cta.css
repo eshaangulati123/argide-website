@@ -1,0 +1,78 @@
+.bottom-cta-section {
+  position: relative;
+  padding: 80px 24px 160px;
+  text-align: left;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -120px;
+}
+
+.flare-bg {
+  position: absolute;
+  inset: 0;
+  background: url('/footer-image.png') center center / cover no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+.flare-bg::before, .flare-bg::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+}
+.flare-bg::before { top: 0; background: linear-gradient(to bottom, #020917 0%, transparent 100%); }
+.flare-bg::after { bottom: 0; background: linear-gradient(to top, #020917 0%, transparent 100%); }
+
+.cta-content { display: flex; flex-direction: column; align-items: flex-start; }
+
+.cta-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  font-size: 3rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  white-space: nowrap;
+}
+@media (min-width: 1024px) { .cta-title { font-size: 5rem; } }
+@media (min-width: 1280px) { .cta-title { font-size: 5.5rem; } }
+
+.cta-title .italic-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  display: block;
+  font-size: inherit;
+  margin-bottom: 0;
+}
+.cta-title strong {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: #ffffff;
+  display: block;
+  padding-left: 2em;
+  font-size: inherit;
+}
+
+.bottom-cta-section .hero-cta { justify-content: flex-start; }
+
+.customer-agent-section {
+  margin: 80px auto;
+  padding: 40px 50px;
+  max-width: 1100px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+}
+.customer-agent-section .section-title { font-size: 1.75rem; margin-bottom: 0; }
+.customer-agent-section .text-lg { font-size: 1rem; line-height: 1.5; }
+@media (min-width: 768px) { .customer-agent-section .section-title { font-size: 2rem; } }
+@media (max-width: 768px) { .customer-agent-section { padding: 32px 24px; } }
