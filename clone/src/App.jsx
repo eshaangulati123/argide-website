@@ -8,27 +8,15 @@ const IconClose = () => (
   </svg>
 );
 
-const IconLogo = ({ width = "28", height = "28", className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 58 58" width={width} height={height} className={className}>
-    <path fill="currentColor" d="M53.254.102c-.33 0-.65.132-.884.366L38.246 14.592c-.602.601-1.615.018-1.393-.806l3.245-12.112A1.25 1.25 0 0 0 38.89.1h-4.965c-.565 0-1.06.38-1.208.926l-2.49 9.29a3.34 3.34 0 0 0 0 1.725l1.786 6.668a10.28 10.28 0 0 0 7.266 7.266l6.668 1.787c.565.15 1.16.15 1.724 0l9.291-2.49a1.25 1.25 0 0 0 .926-1.209v-4.967c0-.82-.775-1.417-1.567-1.204L44.2 21.14c-.822.22-1.406-.792-.804-1.394L57.522 5.62c.234-.234.366-.553.366-.884A4.63 4.63 0 0 0 53.254.102m0 57.789c-.33 0-.65-.132-.884-.365L38.246 43.401c-.602-.602-1.615-.019-1.393.805l3.245 12.113a1.25 1.25 0 0 1-1.208 1.574h-4.965c-.565 0-1.06-.38-1.208-.926l-2.49-9.291a3.35 3.35 0 0 1 0-1.725l1.786-6.668a10.28 10.28 0 0 1 7.266-7.266l6.668-1.787a3.35 3.35 0 0 1 1.724 0l9.291 2.491c.546.146.926.641.926 1.208v4.967c0 .82-.775 1.417-1.567 1.204L44.2 36.854c-.822-.22-1.406.791-.804 1.393l14.126 14.126c.234.234.366.553.366.884a4.64 4.64 0 0 1-4.64 4.641zM4.746.102c.331 0 .65.132.884.366l14.124 14.124c.602.601 1.616.018 1.394-.806L17.903 1.674A1.25 1.25 0 0 1 19.11.102h4.965c.564 0 1.06.38 1.208.926l2.49 9.29c.15.566.15 1.16 0 1.725l-1.787 6.669a10.28 10.28 0 0 1-7.265 7.265l-6.669 1.787a3.35 3.35 0 0 1-1.724 0l-9.29-2.49a1.24 1.24 0 0 1-.934-1.204v-4.967c0-.82.778-1.42 1.57-1.206l12.117 3.247c.824.22 1.407-.791.803-1.393L.471 5.627a1.26 1.26 0 0 1-.366-.884A4.64 4.64 0 0 1 4.746.103Zm0 57.789c.331 0 .65-.132.884-.366l14.124-14.123c.602-.602 1.616-.019 1.394.805L17.903 56.32a1.25 1.25 0 0 0 1.208 1.574h4.965c.564 0 1.06-.38 1.208-.925l2.49-9.291a3.35 3.35 0 0 0 0-1.725l-1.787-6.668a10.28 10.28 0 0 0-7.265-7.266l-6.669-1.787a3.35 3.35 0 0 0-1.724 0l-9.29 2.491a1.24 1.24 0 0 0-.934 1.201v4.967c0 .82.778 1.42 1.57 1.206l12.117-3.247c.824-.22 1.407.792.803 1.393L.471 52.368a1.25 1.25 0 0 0-.366.885 4.64 4.64 0 0 0 4.641 4.64z"></path>
-  </svg>
-);
-
-const IconChevron = () => (
-  <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style={{opacity: 0.7}}>
-    <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+const IconLogo = ({ width = "40", height = "40", className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40" width={width} height={height} className={className}>
+    <circle cx="20" cy="20" r="17.5" stroke="#00BFFF" strokeWidth="2.5" fill="none"/>
   </svg>
 );
 
 const IconMenu = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
     <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"></path>
-  </svg>
-);
-
-const IconArrowRight = () => (
-  <svg width="12" height="12" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.17812 12.047L13.725 7.5001L9.17812 2.95322C8.86875 2.64385 8.3625 2.64385 8.05313 2.95322C7.74375 3.2626 7.74375 3.76885 8.05313 4.07822L10.6781 6.70322H1.875V8.29697H10.6781L8.05313 10.922C7.89375 11.0813 7.81875 11.2782 7.81875 11.4845C7.81875 11.6907 7.89375 11.897 8.05313 12.047C8.3625 12.3563 8.86875 12.3563 9.17812 12.047Z" fill="currentColor"></path>
   </svg>
 );
 
@@ -137,33 +125,18 @@ function App() {
       <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="nav-left mobile-only">
-            <a href="/" className="logo-link"><IconLogo width="28" height="28" /></a>
-            <div className="nav-divider"></div>
-            <a href="#" className="nav-link intercom-link">
-              Intercom
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{marginLeft: '4px'}}><path d="M3.46875 1.875C3.175 1.875 2.9375 2.1125 2.9375 2.40625C2.9375 2.7 3.175 2.93751 3.46875 2.93751H6.3125L1.5 7.75L2.25 8.5L7.0625 3.6875V6.53126C7.0625 6.82501 7.3 7.06249 7.59375 7.06249C7.8875 7.06249 8.125 6.82501 8.125 6.53126V1.875H3.46875Z" fill="currentColor"></path></svg>
-            </a>
+            <a href="/" className="logo-link"><IconLogo /></a>
           </div>
 
           <nav className="desktop-nav">
-            <a href="/" className="logo-link"><IconLogo width="28" height="28" /></a>
-            <ul className="nav-links">
-              <li><button className="nav-dropdown">Product <IconChevron /></button></li>
-              <li><button className="nav-dropdown">AI Technology <IconChevron /></button></li>
-              <li><a href="#" className="nav-link">Customers</a></li>
-              <li><button className="nav-dropdown">Resources <IconChevron /></button></li>
-              <li><a href="#" className="nav-link">Pricing</a></li>
-            </ul>
+            <a href="/" className="logo-link"><IconLogo /></a>
             <ul className="nav-actions">
-              <li><a href="#" className="icon-btn"><IconUser /></a></li>
+              <li><a href="https://dashboard.ourguide.ai" className="icon-btn"><IconUser /></a></li>
               <li><a href="#" className="nav-link">Contact sales</a></li>
-              <li><a href="#" className="nav-link">View demo</a></li>
-              <li><a href="#" className="btn-primary">Start free trial</a></li>
+              {/* <li><a href="#" className="nav-link">View demo</a></li> */}
             </ul>
             <div className="nav-divider"></div>
-            <a href="#" className="btn-outline light intercom-btn">
-              Intercom <IconArrowRight />
-            </a>
+            <a href="#" className="btn-primary">Start free trial</a>
           </nav>
           
           <div className="mobile-actions mobile-only">
