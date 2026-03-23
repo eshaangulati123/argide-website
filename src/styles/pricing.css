@@ -10,7 +10,8 @@
 @media (min-width: 768px) { .pricing-heading { font-size: 4rem; } }
 @media (min-width: 1280px) { .pricing-heading { font-size: 5.5rem; letter-spacing: -0.03em; } }
 
-#pricing { scroll-margin-top: 100px; min-height: 100vh; padding-bottom: 120px; }
+#pricing { scroll-margin-top: 100px; min-height: 100vh; padding: 0 16px 120px; }
+@media (min-width: 768px) { #pricing { padding: 0 0 120px; } }
 
 .pricing-cards-section { margin-bottom: 80px; }
 .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }

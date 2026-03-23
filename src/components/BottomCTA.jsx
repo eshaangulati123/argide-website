@@ -9,7 +9,7 @@ export default function BottomCTA() {
           <span className="italic-text">{bottomCta.line1}</span>
           <strong>{bottomCta.line2}</strong>
         </h2>
-        <div className="hero-cta mt-8 relative z-10">
+        <div className="hero-cta mt-4 relative z-10">
           <a href="#" className="btn-primary large">{bottomCta.ctaPrimary}</a>
           <a href="#" className="btn-outline light large">{bottomCta.ctaSecondary}</a>
         </div>

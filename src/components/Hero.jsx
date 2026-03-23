@@ -32,17 +32,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      <section className="hero-chat-input-section relative z-10">
-        <div className="hero-chat-bubble">
-          <span className="hero-chat-placeholder">{hero.chatPlaceholder}</span>
-          <div className="hero-chat-send-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 19V5M5 12l7-7 7 7"/>
-            </svg>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
