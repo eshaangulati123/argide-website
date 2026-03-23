@@ -11,7 +11,7 @@ export default function Header({ isScrolled }) {
         <nav className="desktop-nav">
           <a href="/" className="logo-link"><IconLogo /></a>
           <ul className="nav-actions">
-            <li><a href="https://dashboard.ourguide.ai" className="icon-btn"><IconUser /></a></li>
+            <li><a href="https://dashboard.argide.ai" className="icon-btn"><IconUser /></a></li>
             <li><a href="#" className="nav-link">Contact sales</a></li>
           </ul>
           <div className="nav-divider"></div>
