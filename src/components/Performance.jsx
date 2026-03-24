@@ -82,7 +82,7 @@ function BarChart() {
       <text x="300" y="74" textAnchor="start" className="chart-bar-value active">73%</text>
       <text x="105" y="305" textAnchor="middle" className="chart-axis-label">DECAGON</text>
       <text x="225" y="305" textAnchor="middle" className="chart-axis-label">FORETHOUGHT</text>
-      <text x="345" y="305" textAnchor="middle" className="chart-bar-label-active">FIN</text>
+      <text x="345" y="305" textAnchor="middle" className="chart-bar-label-active">ARGIDE</text>
     </svg>
   );
 }

@@ -147,15 +147,17 @@ export const pricing = {
   headingLine2: 'chat',
   cards: [
     {
-      title: 'Free',
+  title: 'Free',
       desc: 'Get started with Argide\'s AI agent. Connect your product and let users chat, navigate, and act—all from one interface.',
-      features: ['Unlimited conversations', 'API & data source connections', 'Browser-use navigation', 'Knowledge base integration', 'Community support'],
-      cta: 'Get started free',
+      features: 'Unlimited conversations''Knowledge base integration',,
+      cta: 'Get started free', 
     },
     {
       title: 'Enterprise',
       desc: 'For teams that need advanced workflows, custom integrations, and dedicated support.',
-      features: ['Everything in Free', 'Custom API integrations', 'Advanced automation workflows', 'SOC2, GDPR compliance', 'Dedicated support & onboarding'],
+      features: ['Everything in Free', 
+      'Unlimited conversations', 'API & data source connections', 'Browser-use navigation', 'Knowledge base integration', ],
+       'Advanced automation workflows', 'SOC2, GDPR compliance', 'Dedicated support & onboarding'],
       cta: 'Contact sales',
     },
   ],
