@@ -8,11 +8,11 @@ export default function Header({ isScrolled }) {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <div className="nav-left mobile-only">
-          <a href="/" className="logo-link"><IconLogo /><span className="logo-wordmark">Argide</span></a>
+          <a href="/" className="logo-link"><IconLogo width="38" height="38" /><span className="logo-wordmark">Argide</span></a>
         </div>
 
         <nav className="desktop-nav">
-          <a href="/" className="logo-link"><IconLogo /><span className="logo-wordmark">Argide</span></a>
+          <a href="/" className="logo-link"><IconLogo width="38" height="38" /><span className="logo-wordmark">Argide</span></a>
           <ul className="nav-actions">
             <li><a href="https://dashboard.argide.ai" className="icon-btn"><IconUser /></a></li>
             <li><a href="#" className="nav-link">Contact sales</a></li>

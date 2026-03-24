@@ -5,9 +5,14 @@ export const IconClose = () => (
 );
 
 export const IconLogo = ({ width = "28", height = "28", className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40" width={width} height={height} className={className}>
-    <circle cx="20" cy="20" r="17.5" stroke="#00BFFF" strokeWidth="2.5" fill="none"/>
-  </svg>
+  <img
+    src="/argide-logo.png"
+    alt="Argide"
+    width={width}
+    height={height}
+    className={className}
+    style={{ filter: 'invert(1)', objectFit: 'contain' }}
+  />
 );
 
 export const IconMenu = () => (
