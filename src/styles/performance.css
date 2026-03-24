@@ -43,10 +43,27 @@
 .testimonial-box { padding-left: 0; }
 @media (min-width: 1024px) { .testimonial-box { padding-left: 20px; } }
 
-.avatar-placeholder { width: 60px; height: 60px; border-radius: 50%; background: #ddd; margin-bottom: 24px; }
+.testimonial-box.bordered-box { padding: 0; }
+
+.testimonial-content { padding: 24px; }
+@media (min-width: 1024px) { .testimonial-content { padding: 32px; } }
+
+.testimonial-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  margin-bottom: 24px;
+  display: block;
+  filter: grayscale(100%);
+  background: #ddd;
+}
 blockquote { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.4; color: var(--text-dark); margin-bottom: 24px; font-weight: 400; }
 mark { background-color: var(--accent-orange); color: white; padding: 2px 4px; }
 cite { font-size: 0.875rem; color: var(--text-dark-secondary); font-style: normal; }
+
+.video-section { display: block; }
 
 .video-player {
   background-color: var(--bg-card-dark);
@@ -55,18 +72,73 @@ cite { font-size: 0.875rem; color: var(--text-dark-secondary); font-style: norma
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 80px 100px;
+  padding: 40px 32px;
   border: 1px solid var(--border-light);
   overflow: hidden;
   box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
   min-height: 500px;
 }
+@media (min-width: 768px) {
+  .video-player { padding: 80px 100px; }
+}
 
-.video-content-top { width: 100%; text-align: left; }
-.video-content-top h2 { font-size: 1.75rem; letter-spacing: 0.1em; margin-bottom: 40px; color: white; font-family: var(--font-mono); font-weight: 500; }
-.video-content-top p { font-size: 3rem; color: white; max-width: 1100px; line-height: 1.2; font-family: var(--font-serif); font-weight: 400; margin-bottom: 0; }
+.video-person-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(60,45,35,0.85) 0%, rgba(30,22,18,0.7) 60%, rgba(80,60,40,0.5) 100%);
+  z-index: 0;
+}
+
+.video-person-silhouette {
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  width: 80%;
+  height: 75%;
+  background: radial-gradient(ellipse at 60% 100%, rgba(140,110,80,0.4) 0%, rgba(100,75,55,0.2) 40%, transparent 70%);
+  border-radius: 50% 50% 0 0;
+  z-index: 0;
+}
+
+.video-content-top {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: left;
+}
+.video-content-top h2 {
+  font-size: 1.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.video-content-top p {
+  font-size: 3rem;
+  color: white;
+  max-width: 1100px;
+  line-height: 1.2;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .video-content-top h2 {
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .video-content-top p {
+    font-size: 1.35rem;
+    line-height: 1.5;
+  }
+}
 
 .play-btn {
+  position: relative;
+  z-index: 1;
   margin-top: 80px;
   align-self: center;
   border: 1px solid rgba(255,255,255,0.4);
@@ -82,10 +154,20 @@ cite { font-size: 0.875rem; color: var(--text-dark-secondary); font-style: norma
   transition: all 0.2s;
   background: transparent;
   text-transform: uppercase;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .play-btn {
+    margin-top: 40px;
+    padding: 14px 28px;
+    font-size: 0.75rem;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(4px);
+  }
 }
 .play-btn:hover { background: white; color: black; }
 
-.video-playlist { background: #ffffff; border: 1px solid rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden; }
+.video-playlist { margin-top: 16px; background: #ffffff; border: 1px solid rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden; }
 .playlist-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 .playlist-item { padding: 32px 24px; border-right: 1px solid rgba(0,0,0,0.15); display: flex; gap: 16px; align-items: center; cursor: pointer; }
 .playlist-item:last-child { border-right: none; }

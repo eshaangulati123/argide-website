@@ -132,7 +132,11 @@ export default function Performance() {
           <div className="testimonial-box bordered-box">
             <DashedTapers />
             <div className="testimonial-content">
-              <div className="avatar-placeholder"></div>
+              <img
+                src="/angelo-livanos.png"
+                alt="Angelo Livanos"
+                className="testimonial-avatar"
+              />
               <blockquote>
                 &ldquo;{performance.testimonialQuote}<mark>{performance.testimonialHighlight}</mark>&rdquo;
               </blockquote>
@@ -144,16 +148,18 @@ export default function Performance() {
 
       <div className="video-section mt-16">
         <div className="video-player">
+          <div className="video-person-bg"></div>
+          <div className="video-person-silhouette"></div>
           <div className="video-content-top">
             <h2>{performance.videoCompany}</h2>
             <p>{performance.videoQuote}</p>
           </div>
           <button className="play-btn">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg> PLAY
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg> PLAY
           </button>
         </div>
 
-        <div className="video-playlist mt-4">
+        <div className="video-playlist">
           <div className="playlist-grid">
             {performance.videoItems.map((item, i) => (
               <div key={i} className={`playlist-item${i === 0 ? ' active' : ''}`}>
