@@ -22,22 +22,17 @@ All changes required in `src/App.jsx` (and noted exceptions) to replace Fin/Fin 
 
 | Type | Current | New |
 |------|---------|-----|
-| REWRITE | `The #1 AI Agent for<br />all your customer service` | `The AI Agent that lets users<br />control your app` |
-
+| REWRITE | `The #1 AI Agent for<br />all your customer service` | `The AI Agent that lets users<br />control your app` | #let this be as is 
+ 
 ### Badges (Lines 166–169)
 
 | Type | Current | New |
 |------|---------|-----|
 | REWRITE | `#1 IN BAKE-OFFS` | `0 TURNAROUND TIME` |
-| REWRITE | `#1 IN BENCHMARKS` | `BROWSER-USE AGENTS` |
+| REWRITE | `#1 IN BENCHMARKS` | `BROWSER-USE AGENTS` |#let this be as is 
 | REWRITE | `#1 FOR COMPLEX QUERIES` | `API + UI EXECUTION` | #let this be as is 
-| REWRITE | `#1 ON G2` | `WORKS WITH ANY APP` |
+| REWRITE | `#1 ON G2` | `WORKS WITH ANY APP` | #let this be as is 
 
-### Chat placeholder (Line 180)
-
-| Type | Current | New |
-|------|---------|-----|
-| REWRITE | `Can Fin integrate with my help d...` | `Can Argide navigate my app and...` |
 
 ---
 
@@ -49,22 +44,22 @@ All changes required in `src/App.jsx` (and noted exceptions) to replace Fin/Fin 
 
 | Type | Current | New |
 |------|---------|-----|
-| REWRITE | `Fin resolves the most complex queries on every channel` | `Argide lets users control your app through chat` |
+| REWRITE | `Fin resolves the most complex queries on every channel` | `Argide resolves the most complex queries through chat` |
 
 ### Body Paragraph (Line 272)
 
 | Type | Current | New |
 |------|---------|-----|
-| REWRITE | `Fin handles even the most complex queries through a continuous improvement loop called the Fin Flywheel. Train Fin on your Procedures, knowledge, and policies, test performance before launch, deploy across every channel, then analyze and improve with AI-powered Insights—so every query is resolved accurately and consistently.` | `Argide connects to your product so users can type what they want instead of clicking through menus. Connect Argide to your APIs and data sources, navigate your UI with browser-use agents, and execute real actions—so users get things done faster, every time.` |
+| REWRITE | `Fin handles even the most complex queries through a continuous improvement loop called the Fin Flywheel. Train Fin on your Procedures, knowledge, and policies, test performance before launch, deploy across every channel, then analyze and improve with AI-powered Insights—so every query is resolved accurately and consistently.` |  `Argide replaces your entire support team with an AI agent that actually resolves issues — not just answers questions. Connect Argide to your product and it handles even the most complex queries by navigating your UI, calling your APIs, and executing real actions on behalf of users — so every query is resolved accurately and instantly, with zero turnaround time.` | #LGTM 
 
 ### Feature Cards (Lines 283, 288, 293, 298)
 
 | Card | Type | Current Title | New Title | Current Copy | New Copy |
 |------|------|---------------|-----------|--------------|----------|
-| 1. Train | REWRITE | `Train` | `Connect` | `Train Fin to resolve even the most complex queries with your Procedures, knowledge and policies.` | `Connect Argide to your APIs, data sources, and product UI with a simple integration.` |
-| 2. Test | REWRITE | `Test` | `Chat` | `Run fully simulated customer conversations from start to finish to see exactly how Fin will behave before going live.` | `Users type what they want in natural language instead of navigating menus or learning your interface.` |
+| 1. Train | REWRITE | `Train` | `Train` | `Train Fin to resolve even the most complex queries with your Procedures, knowledge and policies.` | `Train Argide to resolve even the most complex queries with your Procedures, knowledge and policies.`  | #LGTM
+| 2. Test | REWRITE | `Test` | `deploy` | `Run fully simulated customer conversations from start to finish to see exactly how Fin will behave before going live.` | `Users type what they want in natural language instead of navigating menus or learning your interface.` | 
 | 3. Deploy | REWRITE | `Deploy` | `Act` | `Set Fin live across every channel—voice, email, chat, and social—for consistent support wherever customers reach out.` | `Argide executes real actions across your product—browsing your UI, calling your APIs, and completing tasks on behalf of users.` |
-| 4. Analyze | REWRITE | `Analyze` | `Automate` | `Use AI-powered Insights to analyze and improve Fin's performance and deliver better customer experiences.` | `Argide handles complex multi-step workflows autonomously, giving users superpowers inside your product.` |
+| 4. Analyze | REWRITE | `Analyze` | `replace` | `Use AI-powered Insights to analyze and improve Fin's performance and deliver better customer experiences.` | `Argide handles complex multi-step workflows autonomously, giving users superpowers inside your product.` | #LGTM 
 
 ---
 

@@ -83,7 +83,7 @@ function App() {
   }, []);
 
   const activeIndex = parseInt(activeSection) - 1;
-  const progressPercent = (activeIndex / (sectionList.length - 1)) * 100;
+  const progressPercent = Math.min(((activeIndex + sectionProgress) / (sectionList.length - 0.5)) * 100, 100);
 
   return (
     <div className="app-container">
@@ -92,21 +92,23 @@ function App() {
       <main className="main-content">
         <Hero />
 
-        <MobileSectionNav
-          activeSection={activeSection}
-          progressPercent={progressPercent}
-          mobileNavRef={mobileNavRef}
-        />
+        <div className="sections-wrapper">
+          <MobileSectionNav
+            activeSection={activeSection}
+            progressPercent={progressPercent}
+            mobileNavRef={mobileNavRef}
+          />
 
-        <div className="content-layout relative z-10">
-          <Sidebar activeSection={activeSection} sectionProgress={sectionProgress} />
+          <div className="content-layout relative z-10">
+            <Sidebar activeSection={activeSection} sectionProgress={sectionProgress} />
 
-          <div className="scroll-content">
-            <Capabilities />
-            <Performance />
-            <Integrations />
-            <Technology activeEngineStep={activeEngineStep} setActiveEngineStep={setActiveEngineStep} />
-            <Pricing />
+            <div className="scroll-content">
+              <Capabilities />
+              <Performance />
+              <Integrations />
+              <Technology activeEngineStep={activeEngineStep} setActiveEngineStep={setActiveEngineStep} />
+              <Pricing />
+            </div>
           </div>
         </div>
 

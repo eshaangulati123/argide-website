@@ -32,7 +32,7 @@
 .mobile-nav-item.active { color: white; }
 
 .mobile-nav-track { width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.1); }
-.mobile-nav-progress { height: 1px; background-color: var(--accent-orange); transition: width 0.3s ease; min-width: 0; }
+.mobile-nav-progress { height: 1px; background-color: var(--accent-orange); min-width: 0; }
 
 .content-layout {
   display: grid;
