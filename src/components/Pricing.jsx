@@ -32,8 +32,8 @@ export default function Pricing() {
                   <li key={i}>{f}</li>
                 ))}
               </ul>
-              <div className="card-actions">
-                <a href="#" className="btn-primary large">{card.cta}</a>
+                <div className="card-actions">
+                <a href="https://cal.com/eshaangulati" target="_blank" rel="noopener noreferrer" className="btn-primary large">{card.cta}</a>
               </div>
             </div>
           ))}

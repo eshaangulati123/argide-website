@@ -10,8 +10,8 @@ export default function BottomCTA() {
           <strong>{bottomCta.line2}</strong>
         </h2>
         <div className="hero-cta mt-4 relative z-10">
-          <a href="#" className="btn-primary large">{bottomCta.ctaPrimary}</a>
-          <a href="#" className="btn-outline light large">{bottomCta.ctaSecondary}</a>
+          <a href="https://cal.com/eshaangulati" target="_blank" rel="noopener noreferrer" className="btn-primary large">{bottomCta.ctaPrimary}</a>
+          <a href="https://cal.com/eshaangulati" target="_blank" rel="noopener noreferrer" className="btn-outline light large">{bottomCta.ctaSecondary}</a>
         </div>
       </div>
     </section>

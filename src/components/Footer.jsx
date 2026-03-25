@@ -17,9 +17,18 @@ export default function Footer() {
         <div className="footer-col">
           <h4>{footer.actionColumn.title}</h4>
           <ul>
-            {footer.actionColumn.links.map((link) => (
-              <li key={link}><a href="#">{link}</a></li>
-            ))}
+            {footer.actionColumn.links.map((link) => {
+              const calLinks = ['View demo', 'Free trial', 'Contact sales'];
+              return (
+                <li key={link}>
+                  <a
+                    href={calLinks.includes(link) ? 'https://cal.com/eshaangulati' : '#'}
+                    target={calLinks.includes(link) ? '_blank' : undefined}
+                    rel={calLinks.includes(link) ? 'noopener noreferrer' : undefined}
+                  >{link}</a>
+                </li>
+              );
+            })}
           </ul>
           <h4 className="mt-8">{footer.actionColumn.companyTitle}</h4>
           <ul>
