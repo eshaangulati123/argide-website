@@ -151,12 +151,13 @@ export default function Performance() {
           <div className="video-person-bg"></div>
           <div className="video-person-silhouette"></div>
           <div className="video-content-top">
-            <h2>{performance.videoCompany}</h2>
+            <h2 className="video-company-name">
+              PAASA{' '}
+              <img src="/yc-logo.png" alt="Y Combinator" className="video-yc-logo" />
+              {' '}S24
+            </h2>
             <p>{performance.videoQuote}</p>
           </div>
-          <button className="play-btn">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg> PLAY
-          </button>
         </div>
 
         <div className="video-playlist">

@@ -11,6 +11,14 @@
 
 .capabilities-heading .italic-serif { font-style: italic; }
 
+.capabilities-wistia-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 48px auto 64px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .dot-grid-placeholder {
   height: 300px;
   background-image: radial-gradient(rgba(0,0,0,0.15) 1.5px, transparent 1.5px);

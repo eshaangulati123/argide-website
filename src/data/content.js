@@ -50,7 +50,7 @@ export const performance = {
   testimonialQuote: 'Argide is in a completely different league. It\'s now involved in 99% of conversations and ',
   testimonialHighlight: 'successfully resolves up to 65% end-to-end – even the more complex ones.',
   testimonialAuthor: 'Angelo Livanos, Vice President of Global Support at Lightspeed',
-  videoCompany: 'ANTHROP\\C',
+  videoCompany: 'PAASA',
   videoQuote: '"If you\'re debating whether to build your own AI solution or buy one, my advice would be to buy – and specifically, buy Argide."',
   videoTitle: 'Build vs. buy: Why Anthropic chose Argide',
   videoItems: [

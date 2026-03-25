@@ -53,3 +53,6 @@
 
 .int-fin-cell { grid-column: 3; grid-row: 2 / 4; height: auto; background: #000; border: 1px solid rgba(255,255,255,0.25); border-radius: 14px; }
 .int-fin-cell .int-fin-logo { width: 60%; max-width: 150px; height: auto; }
+.int-argide-logo { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.int-argide-mark { width: 64px; height: 64px; filter: brightness(0) saturate(100%) invert(50%) sepia(95%) saturate(1500%) hue-rotate(360deg) brightness(103%) contrast(106%); object-fit: contain; }
+.int-argide-text { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 500; color: #ff5600; letter-spacing: -0.01em; }

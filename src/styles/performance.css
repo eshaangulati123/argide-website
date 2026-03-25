@@ -136,6 +136,9 @@ cite { font-size: 0.875rem; color: var(--text-dark-secondary); font-style: norma
   }
 }
 
+.video-company-name { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.video-yc-logo { height: 2.2em; width: auto; object-fit: contain; vertical-align: middle; margin-top: -0.15em; }
+
 .play-btn {
   position: relative;
   z-index: 1;

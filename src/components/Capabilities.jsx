@@ -21,7 +21,9 @@ export default function Capabilities() {
         <div className="empty-block"></div>
       </div>
 
-      <div className="dot-grid-placeholder"></div>
+      <div className="capabilities-wistia-wrapper">
+        <wistia-player media-id="7afwho9zbe" aspect="16/9"></wistia-player>
+      </div>
 
       <div className="features-grid">
         {capabilities.features.map((f) => (
