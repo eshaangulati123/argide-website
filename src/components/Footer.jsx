@@ -22,7 +22,7 @@ export default function Footer() {
               return (
                 <li key={link}>
                   <a
-                    href={calLinks.includes(link) ? 'https://cal.com/eshaangulati' : '#'}
+                    href={calLinks.includes(link) ? '/book/30min' : '#'}
                     target={calLinks.includes(link) ? '_blank' : undefined}
                     rel={calLinks.includes(link) ? 'noopener noreferrer' : undefined}
                   >{link}</a>

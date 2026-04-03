@@ -33,7 +33,7 @@ export default function Pricing() {
                 ))}
               </ul>
                 <div className="card-actions">
-                <a href="https://cal.com/eshaangulati" target="_blank" rel="noopener noreferrer" className="btn-primary large">{card.cta}</a>
+                <a href="/book/30min" target="_blank" rel="noopener noreferrer" className="btn-primary large">{card.cta}</a>
               </div>
             </div>
           ))}

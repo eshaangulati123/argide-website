@@ -27,8 +27,8 @@ export default function Hero() {
             ))}
           </ul>
           <div className="hero-cta mt-8">
-            <a href="https://cal.com/eshaangulati" target="_blank" rel="noopener noreferrer" className="btn-primary large">{hero.ctaPrimary}</a>
-            <a href="https://cal.com/eshaangulati" target="_blank" rel="noopener noreferrer" className="btn-outline light large">{hero.ctaSecondary}</a>
+            <a href="/book/30min" target="_blank" rel="noopener noreferrer" className="btn-primary large">{hero.ctaPrimary}</a>
+            <a href="/book/30min" target="_blank" rel="noopener noreferrer" className="btn-outline light large">{hero.ctaSecondary}</a>
           </div>
         </div>
       </section>
