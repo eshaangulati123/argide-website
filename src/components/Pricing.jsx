@@ -33,7 +33,7 @@ export default function Pricing() {
                 ))}
               </ul>
                 <div className="card-actions">
-                <a href="/book/30min" target="_blank" rel="noopener noreferrer" className="btn-primary large">{card.cta}</a>
+                <a href="https://calendar.app.google/HfGA4PQZXRLKTGpR9" target="_blank" rel="noopener noreferrer" className="btn-primary large">{card.cta}</a>
               </div>
             </div>
           ))}
