@@ -29,7 +29,7 @@ export default function Pricing() {
               <p className="card-desc">{card.desc}</p>
               <ul className="pricing-features">
                 {card.features.map((f, i) => (
-                  <li key={i}>{f}</li>
+                  <li key={i} className={f.included ? 'included' : 'excluded'}>{f.name}</li>
                 ))}
               </ul>
                 <div className="card-actions">

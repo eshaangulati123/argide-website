@@ -39,7 +39,9 @@
   flex-direction: column;
   gap: 10px;
 }
-.pricing-features li { font-size: 0.875rem; color: var(--text-secondary); padding-left: 16px; position: relative; }
-.pricing-features li::before { content: '—'; position: absolute; left: 0; color: rgba(255, 255, 255, 0.25); font-size: 0.75rem; }
+.pricing-features li { font-size: 0.875rem; color: var(--text-secondary); padding-left: 20px; position: relative; }
+.pricing-features li.included::before { content: '✓'; position: absolute; left: 0; color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+.pricing-features li.excluded { color: rgba(255, 255, 255, 0.2); }
+.pricing-features li.excluded::before { content: '✗'; position: absolute; left: 0; color: rgba(255, 255, 255, 0.15); font-size: 0.85rem; }
 
 .card-actions { display: flex; align-items: center; gap: 24px; margin-top: auto; }
