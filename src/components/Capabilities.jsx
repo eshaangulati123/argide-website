@@ -22,7 +22,7 @@ export default function Capabilities() {
       </div>
 
       <div className="capabilities-wistia-wrapper">
-        <wistia-player media-id="7afwho9zbe" aspect="16/9"></wistia-player>
+        <wistia-player media-id="47ul4ni2fc" aspect="16/9"></wistia-player>
       </div>
 
       <div className="features-grid">
