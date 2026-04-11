@@ -14,7 +14,7 @@ export default function Header({ isScrolled }) {
         <nav className="desktop-nav">
           <a href="/" className="logo-link"><IconLogo width="38" height="38" /><span className="logo-wordmark">Argide</span></a>
           <ul className="nav-actions">
-            <li><a href="https://dashboard.argide.ai" className="icon-btn"><IconUser /></a></li>
+            <li className="icon-btn-wrapper"><a href="https://dashboard.argide.ai" className="icon-btn"><IconUser /></a><span className="icon-btn-tooltip">Sign in</span></li>
             <li><a href="https://calendar.app.google/HfGA4PQZXRLKTGpR9" target="_blank" rel="noopener noreferrer" className="nav-link">Contact sales</a></li>
           </ul>
           <div className="nav-divider"></div>
