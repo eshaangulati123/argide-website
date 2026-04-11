@@ -72,23 +72,32 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(4px);
   padding: 4px 10px;
   font-size: 0.75rem;
   font-weight: 500;
   color: #fff;
-  background-color: rgba(30, 30, 40, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border: none;
   border-radius: 6px;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease, transform 0.15s ease;
-  transform: translateX(-50%) translateY(8px);
+  transform: translateX(-50%) translateY(12px);
+}
+.icon-btn-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: rgba(255,255,255,0.2);
 }
 .icon-btn-wrapper:hover .icon-btn-tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(-50%) translateY(8px);
 }
 
 .nav-divider { width: 1px; height: 24px; background-color: var(--border-light); margin: 0 16px; }
