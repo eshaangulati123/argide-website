@@ -134,7 +134,7 @@ export default function Performance() {
             <div className="testimonial-content">
               <img
                 src="/angelo-livanos.png"
-                alt="Angelo Livanos"
+                alt="Sean Kilachand"
                 className="testimonial-avatar"
               />
               <blockquote>

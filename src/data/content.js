@@ -16,7 +16,7 @@ export const engineSteps = [
 ];
 
 export const hero = {
-  titleLine1: 'The #1 AI Agent for',
+  titleLine1: 'The #1 browser-use agent for',
   titleEmphasis: 'all',
   titleLine2: 'your customer service',
   badges: ['0 FIRST RESPONSE TIME', '#1 IN BENCHMARKS', '#1 FOR COMPLEX QUERIES', '#1 ON G2'],
@@ -28,6 +28,7 @@ export const hero = {
 export const capabilities = {
   label: 'CAPABILITIES',
   heading: 'Argide resolves the most complex queries through chat',
+  subheading: 'The era of waiting for support is over.',
   sectionNum: '01',
   body: 'Argide replaces your entire support team with an AI agent that actually resolves issues — not just answers questions. Connect Argide to your product and it handles even the most complex queries by navigating your UI, calling your APIs, and executing real actions on behalf of users — so every query is resolved accurately and instantly, with zero first response time.',
   cta: 'Explore all capabilities',
@@ -49,7 +50,7 @@ export const performance = {
   testimonialLabel: 'FIG 2.C - FINTECH CUSTOMER',
   testimonialQuote: 'Argide is in a completely different league. It\'s now involved in 99% of conversations and ',
   testimonialHighlight: 'successfully resolves up to 65% end-to-end – even the more complex ones.',
-  testimonialAuthor: 'Angelo Livanos, Vice President of Global Support at Lightspeed',
+  testimonialAuthor: 'Sean Kilachand, CEO Edusynch',
   videoCompany: 'PAASA',
   videoQuote: '"If you\'re debating whether to build your own AI solution or buy one, my advice would be to buy – and specifically, buy Argide."',
   videoTitle: 'Build vs. buy: Why Anthropic chose Argide',

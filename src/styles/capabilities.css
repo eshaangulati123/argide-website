@@ -5,11 +5,21 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: #000000;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 @media (min-width: 768px) { .capabilities-heading { font-size: 4.5rem; } }
 
 .capabilities-heading .italic-serif { font-style: italic; }
+
+.capabilities-subheading {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 40px;
+}
 
 .capabilities-wistia-wrapper {
   width: 100%;

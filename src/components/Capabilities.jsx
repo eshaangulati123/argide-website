@@ -9,6 +9,7 @@ export default function Capabilities() {
       <SectionLabel text={capabilities.label} withDivider />
 
       <h2 className="capabilities-heading">{capabilities.heading}</h2>
+      <p className="capabilities-subheading">{capabilities.subheading}</p>
 
       <div className="content-grid two-col">
         <div className="text-block">

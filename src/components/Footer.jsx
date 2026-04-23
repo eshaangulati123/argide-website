@@ -1,5 +1,7 @@
 import { footer } from '../data/content';
 
+const BOOKING_LINK = 'https://calendar.app.google/HfGA4PQZXRLKTGpR9';
+
 export default function Footer() {
   return (
     <footer className="footer relative z-10">
@@ -9,7 +11,9 @@ export default function Footer() {
             <h4>{col.title}</h4>
             <ul>
               {col.links.map((link) => (
-                <li key={link}><a href="#">{link}</a></li>
+                <li key={link}>
+                  <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer">{link}</a>
+                </li>
               ))}
             </ul>
           </div>
@@ -17,23 +21,18 @@ export default function Footer() {
         <div className="footer-col">
           <h4>{footer.actionColumn.title}</h4>
           <ul>
-            {footer.actionColumn.links.map((link) => {
-              const calLinks = ['View demo', 'Free trial', 'Contact sales'];
-              return (
-                <li key={link}>
-                  <a
-                    href={calLinks.includes(link) ? 'https://calendar.app.google/HfGA4PQZXRLKTGpR9' : '#'}
-                    target={calLinks.includes(link) ? '_blank' : undefined}
-                    rel={calLinks.includes(link) ? 'noopener noreferrer' : undefined}
-                  >{link}</a>
-                </li>
-              );
-            })}
+            {footer.actionColumn.links.map((link) => (
+              <li key={link}>
+                <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer">{link}</a>
+              </li>
+            ))}
           </ul>
           <h4 className="mt-8">{footer.actionColumn.companyTitle}</h4>
           <ul>
             {footer.actionColumn.companyLinks.map((link) => (
-              <li key={link}><a href="#">{link}</a></li>
+              <li key={link}>
+                <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer">{link}</a>
+              </li>
             ))}
           </ul>
         </div>
@@ -45,9 +44,9 @@ export default function Footer() {
         </div>
         <div className="footer-bottom-links">
           {footer.bottomLinks.map((link) => (
-            <a key={link} href="#">{link}</a>
+            <a key={link} href={BOOKING_LINK} target="_blank" rel="noopener noreferrer">{link}</a>
           ))}
-          <a href="#" className="privacy-choices">
+          <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" className="privacy-choices">
             <svg viewBox="0 0 30 14" width="24" height="12"><rect width="30" height="14" rx="7" fill="#0052cc"/><circle cx="7" cy="7" r="5" fill="white"/><path d="M19 4L25 10M25 4L19 10" stroke="white" strokeWidth="1.5"/></svg>
             Your Privacy Choices
           </a>
