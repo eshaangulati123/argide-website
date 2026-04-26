@@ -90,6 +90,26 @@ export default function Technology({ activeEngineStep, setActiveEngineStep }) {
           </div>
         </div>
       </div>
+
+      {technology.compliance && (
+        <div className="trust-badges-row">
+          <div className="mono-label trust-badges-label">{technology.compliance.label}</div>
+          <div className="trust-badges-marquee">
+            <div className="trust-badges-track">
+              {[...technology.compliance.badges, ...technology.compliance.badges].map((badge, i) => (
+                <img
+                  key={i}
+                  src={badge.src}
+                  alt={badge.alt}
+                  className="trust-badge-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

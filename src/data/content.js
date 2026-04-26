@@ -101,6 +101,16 @@ export const technology = {
     { label: 'VALIDATE RESULTS', side: 'left', top: '68%', height: '14%' },
     { label: 'ENGINE OPTIMIZATION', side: 'right', top: '83%', height: '15%' },
   ],
+  compliance: {
+    label: 'TRUSTED AND FULLY CERTIFIED',
+    badges: [
+      { src: '/compliance/iso-27001.webp', alt: 'ISO 27001 certified' },
+      { src: '/compliance/iso-27018.webp', alt: 'ISO 27018 certified' },
+      { src: '/compliance/iso-27701.webp', alt: 'ISO 27701 certified' },
+      { src: '/compliance/gdpr-compliant.webp', alt: 'GDPR compliant' },
+      { src: '/compliance/ccpa-compliant.webp', alt: 'CCPA compliant' },
+    ],
+  },
 };
 
 export const pricing = {

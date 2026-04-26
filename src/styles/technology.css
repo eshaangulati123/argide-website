@@ -88,3 +88,63 @@
   transition: background-color 0.2s;
 }
 .diagram-mobile-nav button:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+.trust-badges-row {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.trust-badges-label {
+  display: block;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40px;
+  letter-spacing: 0.14em;
+}
+.trust-badges-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+}
+.trust-badges-track {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  animation: trust-badges-scroll 28s linear infinite;
+}
+.trust-badge-img {
+  height: 72px;
+  width: auto;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+.trust-badge-img:hover { opacity: 1; }
+@keyframes trust-badges-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trust-badges-track { animation: none; }
+}
+@media (max-width: 767px) {
+  .trust-badge-img { height: 56px; }
+  .trust-badges-track { gap: 40px; }
+}
+
