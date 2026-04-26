@@ -27,7 +27,8 @@ export const hero = {
 
 export const capabilities = {
   label: 'CAPABILITIES',
-  heading: 'Argide resolves the most complex queries through chat',
+  heading: 'Argide resolves the most complex queries through chat.',
+  headingEmphasis: 'Instantly.',
   subheading: 'The era of waiting for support is over.',
   sectionNum: '01',
   body: 'Argide replaces your entire support team with an AI agent that actually resolves issues — not just answers questions. Connect Argide to your product and it handles even the most complex queries by navigating your UI, calling your APIs, and executing real actions on behalf of users — so every query is resolved accurately and instantly, with zero first response time.',

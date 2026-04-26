@@ -1,14 +1,42 @@
+import { useEffect, useRef, useState } from 'react';
 import CardBrackets from './ui/CardBrackets';
 import SectionLabel from './ui/SectionLabel';
 import { capabilities } from '../data/content';
 
 export default function Capabilities() {
+  const emphasisRef = useRef(null);
+  const [underlined, setUnderlined] = useState(false);
+
+  useEffect(() => {
+    const node = emphasisRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setUnderlined(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.6 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="capabilities" className="card-section light-card">
       <CardBrackets />
       <SectionLabel text={capabilities.label} withDivider />
 
-      <h2 className="capabilities-heading">{capabilities.heading}</h2>
+      <h2 className="capabilities-heading">
+        {capabilities.heading}{' '}
+        <span
+          ref={emphasisRef}
+          className={`italic-serif capabilities-heading-emphasis${underlined ? ' is-underlined' : ''}`}
+        >
+          {capabilities.headingEmphasis}
+        </span>
+      </h2>
       <p className="capabilities-subheading">{capabilities.subheading}</p>
 
       <div className="content-grid two-col">

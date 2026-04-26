@@ -65,7 +65,9 @@
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
 }
-.hero-title span { font-style: italic; }
+.hero-title span {
+  filter: drop-shadow(0 0 8px #ffffff);
+}
 @media (min-width: 480px) { .hero-title { font-size: 3rem; } }
 @media (min-width: 768px) { .hero-title { font-size: 4rem; } }
 @media (min-width: 1280px) { .hero-title { font-size: 5.5rem; letter-spacing: -0.03em; } }
