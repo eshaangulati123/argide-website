@@ -12,6 +12,7 @@ import './styles/technology.css';
 import './styles/pricing.css';
 import './styles/cta.css';
 import './styles/footer.css';
+import './styles/policy.css';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -24,10 +25,31 @@ import Pricing from './components/Pricing';
 import BottomCTA from './components/BottomCTA';
 import CustomerAgent from './components/CustomerAgent';
 import Footer from './components/Footer';
+import ChangeControlPolicy from './components/ChangeControlPolicy';
 
 import { sectionList } from './data/content';
 
 function App() {
+  const [pathname, setPathname] = useState(
+    typeof window !== 'undefined' ? window.location.pathname : '/'
+  );
+
+  useEffect(() => {
+    const onPopState = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  if (pathname === '/change-control-policy' || pathname === '/change-control-policy/') {
+    return (
+      <div className="app-container">
+        <Header isScrolled={true} />
+        <ChangeControlPolicy />
+        <Footer />
+      </div>
+    );
+  }
+
   const [activeSection, setActiveSection] = useState('01');
   const [sectionProgress, setSectionProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);

@@ -192,6 +192,6 @@ export const footer = {
     companyTitle: 'COMPANY',
     companyLinks: ['Careers ↗'],
   },
-  bottomLeft: 'Argide',
+  bottomLeft: '© 2026 eXCatalyst, Inc.',
   bottomLinks: ['Terms', 'Privacy', 'Security'],
 };

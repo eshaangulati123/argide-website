@@ -91,7 +91,7 @@ export default function Technology({ activeEngineStep, setActiveEngineStep }) {
         </div>
       </div>
 
-      {technology.compliance && (
+      {/* {technology.compliance && (
         <div className="trust-badges-row">
           <div className="mono-label trust-badges-label">{technology.compliance.label}</div>
           <div className="trust-badges-marquee">
@@ -109,7 +109,7 @@ export default function Technology({ activeEngineStep, setActiveEngineStep }) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </section>
   );
 }

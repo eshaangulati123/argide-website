@@ -18,7 +18,9 @@
 .footer-bottom { display: flex; flex-direction: column; gap: 24px; border-top: 1px solid var(--border-light); padding-top: 40px; }
 @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; } }
 
-.footer-bottom-left { color: rgba(255,255,255,0.6); font-size: 0.875rem; }
+.footer-bottom-left { color: rgba(255,255,255,0.6); font-size: 0.875rem; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.footer-soc-badge { height: 96px; width: auto; opacity: 0.95; }
+.footer-soc-text { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); font-size: 0.875rem; }
 .footer-bottom-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; font-size: 0.875rem; color: rgba(255,255,255,0.6); }
 .footer-bottom-links a { color: inherit; }
 .footer-bottom-links a:hover { color: white; }

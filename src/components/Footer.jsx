@@ -41,15 +41,23 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="footer-bottom-left">
           <span>{footer.bottomLeft}</span>
+          <span className="footer-soc-text">🛡 SOC 2 Certified</span>
+          <img
+            src="/compliance/soc2-type2.webp"
+            alt="SOC 2 Type 2 certified"
+            className="footer-soc-badge"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="footer-bottom-links">
           {footer.bottomLinks.map((link) => (
-            <a key={link} href={BOOKING_LINK} target="_blank" rel="noopener noreferrer">{link}</a>
+            <span key={link}>{link}</span>
           ))}
-          <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" className="privacy-choices">
+          <span className="privacy-choices">
             <svg viewBox="0 0 30 14" width="24" height="12"><rect width="30" height="14" rx="7" fill="#0052cc"/><circle cx="7" cy="7" r="5" fill="white"/><path d="M19 4L25 10M25 4L19 10" stroke="white" strokeWidth="1.5"/></svg>
             Your Privacy Choices
-          </a>
+          </span>
         </div>
       </div>
     </footer>
