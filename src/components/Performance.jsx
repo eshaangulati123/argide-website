@@ -27,7 +27,7 @@ function LineChart() {
       {[60, 110, 160, 210, 260, 310, 350].map((y, i) => (
         <line key={i} x1="50" y1={y} x2="880" y2={y} stroke="rgba(0,0,0,0.08)" strokeDasharray="8 8" />
       ))}
-      {['70%','60%','50%','40%','30%','20%','10%'].map((label, i) => (
+      {['80%','70%','60%','50%','40%','30%','20%'].map((label, i) => (
         <text key={i} x="45" y={60 + i * 50 + 4} textAnchor="end" className="chart-axis-label">{label}</text>
       ))}
       <path d="M60,320 L100,310 L140,305 L180,300 L220,290 L260,275 L300,260 L340,240 L380,230 L420,210 L460,200 L500,185 L540,175 L560,170 L600,160 L640,155 L680,140 L720,130 L760,115 L800,105 L840,90 L870,80 L870,350 L60,350 Z" fill="url(#dotPatternChart)" />
