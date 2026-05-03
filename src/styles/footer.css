@@ -19,8 +19,11 @@
 @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; } }
 
 .footer-bottom-left { color: rgba(255,255,255,0.6); font-size: 0.875rem; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.footer-bottom-left-text { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.footer-bottom-left-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .footer-soc-badge { height: 96px; width: auto; opacity: 0.95; }
 .footer-soc-text { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.75); font-size: 0.875rem; }
+.footer-soc-icon { color: rgba(255, 255, 255, 0.55); flex-shrink: 0; }
 .footer-bottom-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; font-size: 0.875rem; color: rgba(255,255,255,0.6); }
 .footer-bottom-links a { color: inherit; }
 .footer-bottom-links a:hover { color: white; }
@@ -31,16 +34,15 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0;
+  background: transparent;
+  border: none;
   color: rgba(255, 255, 255, 0.85) !important;
   font-size: 0.8125rem;
   line-height: 1;
-  transition: background 0.2s, border-color 0.2s;
+  transition: color 0.2s;
 }
-.status-pill:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+.status-pill:hover { color: white !important; }
 .status-pill-dot {
   width: 8px;
   height: 8px;
