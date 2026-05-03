@@ -55,7 +55,16 @@ export default function Footer() {
           {footer.bottomLinks.map((link) => (
             <span key={link}>{link}</span>
           ))}
-          <a href={STATUS_LINK} target="_blank" rel="noopener noreferrer">Status ↗</a>
+          <a
+            href={STATUS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="status-pill"
+            aria-label="Status: all systems operational"
+          >
+            <span className="status-pill-dot" aria-hidden="true" />
+            All systems operational
+          </a>
           <span className="privacy-choices">
             <svg viewBox="0 0 30 14" width="24" height="12"><rect width="30" height="14" rx="7" fill="#0052cc"/><circle cx="7" cy="7" r="5" fill="white"/><path d="M19 4L25 10M25 4L19 10" stroke="white" strokeWidth="1.5"/></svg>
             Your Privacy Choices
