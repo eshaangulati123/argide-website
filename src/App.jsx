@@ -28,6 +28,7 @@ import Footer from './components/Footer';
 import ChangeControlPolicy from './components/ChangeControlPolicy';
 import Security from './components/Security';
 import Terms from './components/Terms';
+import Privacy from './components/Privacy';
 
 import { sectionList } from './data/content';
 
@@ -74,6 +75,21 @@ function App() {
       <div className="app-container">
         <Header isScrolled={true} />
         <Terms />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (
+    pathname === '/privacy' ||
+    pathname === '/privacy/' ||
+    pathname === '/privacy-policy' ||
+    pathname === '/privacy-policy/'
+  ) {
+    return (
+      <div className="app-container">
+        <Header isScrolled={true} />
+        <Privacy />
         <Footer />
       </div>
     );

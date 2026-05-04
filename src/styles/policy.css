@@ -294,6 +294,20 @@
 .terms-page .policy-section { scroll-margin-top: calc(var(--header-height) + 24px); }
 .terms-page .policy-section > h2 { scroll-margin-top: calc(var(--header-height) + 24px); }
 
+.policy-list--cookie-blocks li > p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.policy-list--cookie-blocks li > p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-list--cookie-blocks li > p em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 .security-hero-image--bottom {
   margin: 80px -24px 0;
   min-height: 320px;

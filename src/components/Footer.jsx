@@ -94,6 +94,7 @@ export default function Footer() {
           {footer.bottomLinks.map((link) => {
             if (link === 'Security') return <a key={link} href="/security">{link}</a>;
             if (link === 'Terms') return <a key={link} href="/terms">{link}</a>;
+            if (link === 'Privacy') return <a key={link} href="/privacy">{link}</a>;
             return <span key={link}>{link}</span>;
           })}
           <span className="privacy-choices">
