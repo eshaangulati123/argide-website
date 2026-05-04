@@ -27,6 +27,7 @@ import CustomerAgent from './components/CustomerAgent';
 import Footer from './components/Footer';
 import ChangeControlPolicy from './components/ChangeControlPolicy';
 import Security from './components/Security';
+import Terms from './components/Terms';
 
 import { sectionList } from './data/content';
 
@@ -56,6 +57,23 @@ function App() {
       <div className="app-container">
         <Header isScrolled={true} />
         <Security />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (
+    pathname === '/terms' ||
+    pathname === '/terms/' ||
+    pathname === '/tos' ||
+    pathname === '/tos/' ||
+    pathname === '/terms-of-service' ||
+    pathname === '/terms-of-service/'
+  ) {
+    return (
+      <div className="app-container">
+        <Header isScrolled={true} />
+        <Terms />
         <Footer />
       </div>
     );

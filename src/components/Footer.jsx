@@ -91,13 +91,11 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom-links">
-          {footer.bottomLinks.map((link) =>
-            link === 'Security' ? (
-              <a key={link} href="/security">{link}</a>
-            ) : (
-              <span key={link}>{link}</span>
-            )
-          )}
+          {footer.bottomLinks.map((link) => {
+            if (link === 'Security') return <a key={link} href="/security">{link}</a>;
+            if (link === 'Terms') return <a key={link} href="/terms">{link}</a>;
+            return <span key={link}>{link}</span>;
+          })}
           <span className="privacy-choices">
             <svg viewBox="0 0 30 14" width="24" height="12"><rect width="30" height="14" rx="7" fill="#0052cc"/><circle cx="7" cy="7" r="5" fill="white"/><path d="M19 4L25 10M25 4L19 10" stroke="white" strokeWidth="1.5"/></svg>
             Your Privacy Choices
