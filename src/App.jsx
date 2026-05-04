@@ -26,6 +26,7 @@ import BottomCTA from './components/BottomCTA';
 import CustomerAgent from './components/CustomerAgent';
 import Footer from './components/Footer';
 import ChangeControlPolicy from './components/ChangeControlPolicy';
+import Security from './components/Security';
 
 import { sectionList } from './data/content';
 
@@ -45,6 +46,16 @@ function App() {
       <div className="app-container">
         <Header isScrolled={true} />
         <ChangeControlPolicy />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (pathname === '/security' || pathname === '/security/' || pathname === '/trust' || pathname === '/trust/') {
+    return (
+      <div className="app-container">
+        <Header isScrolled={true} />
+        <Security />
         <Footer />
       </div>
     );
